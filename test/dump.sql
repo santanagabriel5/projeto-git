@@ -1,4 +1,4 @@
-use projeto_ava;
+use usuariosprojeto;
 
 drop table if exists disciplina;
 
@@ -12,4 +12,13 @@ fim date not null,
 constraint PK_Disciplina primary key (id));
 
 
+create table posts(
+id int not null,
+titulo varchar(60) not null,
+descricao varchar(60) not null,
+idDisciplina int not null,
+constraint PK_Posts primary key (id));
+
 select * from disciplina;
+
+
