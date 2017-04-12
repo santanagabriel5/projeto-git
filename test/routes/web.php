@@ -12,7 +12,7 @@
 */
 
 //YOLOOOOOOO
-Route::get('/test', 'UsuarioController@test');
+Route::get('/testtesteteste', 'UsuarioController@test');
 Route::get('/hello', 'UsuarioController@hello');
 
 
