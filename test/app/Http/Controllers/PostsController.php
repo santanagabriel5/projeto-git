@@ -64,7 +64,7 @@ public function lista($id)  {
       return view('telas.alunoenxerido');
     }else {
       Posts::create(Request::all());
-    return redirect()->action('PostsController@lista')->with('id', $idDisciplina);;
+    return redirect()->action('DisciplinaController@mostra', $idDisciplina);
     }
 
 

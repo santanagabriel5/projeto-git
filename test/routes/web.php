@@ -11,8 +11,8 @@
 |
 */
 
-//YOLOOOOOOO
-Route::get('/testtesteteste', 'UsuarioController@test');
+
+Route::get('/test', 'UsuarioController@test');
 Route::get('/hello', 'UsuarioController@hello');
 
 
@@ -44,7 +44,7 @@ Route::get('/disciplina/json', 'DisciplinaController@listaJson');
 // Posts
 
 
-Route::get('/disciplina/mostra','PostsController@lista');
+Route::get('/disciplina/detalhes','PostsController@lista');
 
 Route::get('/disciplina/posts/detalhes/{id}','PostsController@mostra')->where('id','[0-9]+');
 
