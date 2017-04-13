@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\DB;
 use Request;
 use App\Disciplina;
+use App\Posts;
 use App\Http\Requests\DisciplinasRequest;
 
 
@@ -22,6 +23,8 @@ class DisciplinaController extends Controller
     if($user['professor']==0) {
       return view('telas.alunoenxerido');
     }else {
+
+      //$posts = Posts::all();
       $disciplina = Disciplina::all();
         return view('disciplina.Listagem')->with('disciplina', $disciplina);
     }
@@ -39,7 +42,11 @@ class DisciplinaController extends Controller
       if(empty($disciplina)) {
       return "Essa disciplina não existe";
       }
-      return view('disciplina.detalhes')->with('d', $disciplina);
+      $posts = Posts::where('idDisciplina', '=', $id)->get();
+
+      //$posts = Posts::all();
+
+      return view('disciplina.detalhes',['posts'=> $posts,'d'=> $disciplina ]);
     }
 
 

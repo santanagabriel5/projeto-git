@@ -15,6 +15,7 @@ class PostsController extends Controller
   ['only' => ['adiciona', 'remove']]);
 
 }*/
+/*
 public function lista($id)  {
 
 
@@ -23,14 +24,15 @@ public function lista($id)  {
     if($user['professor']==0) {
       return view('telas.alunoenxerido');
     }else {
-      $posts = Posts::all();
+      $posts = Posts::where('idDisciplina', '==', $id)->get();
+    //  $posts = Posts::all();
 
     $disciplina = Disciplina::find($id);
         return view('disciplina.detalhes',['id'=>$id,'posts'=> $posts,'d'=> $disciplina ]);
     }
 
   }
-
+*/
   public function mostra($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
@@ -64,7 +66,7 @@ public function lista($id)  {
       return view('telas.alunoenxerido');
     }else {
       Posts::create(Request::all());
-    return redirect()->action('PostsController@lista')->with('id', $idDisciplina);;
+    return redirect()->action('DisciplinaController@mostra',$idDisciplina);
     }
 
 
