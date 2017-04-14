@@ -25,13 +25,14 @@ class DisciplinaController extends Controller
     }else {
 
       //$posts = Posts::all();
-      $disciplina = Disciplina::all();
+      $disciplina = Disciplina::where('codProfessor', '=', $user['id'])->get();
         return view('disciplina.Listagem')->with('disciplina', $disciplina);
     }
 
 
   }
 
+//teste comit atom
   public function mostra($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
