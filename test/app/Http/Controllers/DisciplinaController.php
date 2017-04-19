@@ -21,7 +21,7 @@ class DisciplinaController extends Controller
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
-      return view('disciplinaaluno.listagem');
+      return view('disciplinaaluno.listagem')->with('disciplina', $disciplina);
     }else {
 
       //$posts = Posts::all();
@@ -36,7 +36,7 @@ class DisciplinaController extends Controller
 
     if($user['professor']==0) {
       //if aluno matriculado na disciplina {
-        return view('disciplinaaluno.listagem'); //}
+        return view('disciplinaaluno.detalhes',['posts'=> $posts,'d'=> $disciplina ]); //}
       //else
        // return view('disciplinaaluno.matricular');
     }else {
@@ -50,9 +50,6 @@ class DisciplinaController extends Controller
 
       return view('disciplina.detalhes',['posts'=> $posts,'d'=> $disciplina ]);
     }
-
-
-
 
   }
 
@@ -135,7 +132,6 @@ class DisciplinaController extends Controller
 
   }
 
-
   public function listaJson(){
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
@@ -154,8 +150,5 @@ public function matricular()  {
   }
 }
 
-
 }
-
-
  ?>
