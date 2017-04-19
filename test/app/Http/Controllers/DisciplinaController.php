@@ -21,15 +21,13 @@ class DisciplinaController extends Controller
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
-      return view('telas.alunoenxerido');
+      return view('disciplinaaluno.listagem');
     }else {
 
       //$posts = Posts::all();
       $disciplina = Disciplina::where('codProfessor', '=', $user['id'])->get();
-        return view('disciplina.Listagem')->with('disciplina', $disciplina);
+        return view('disciplina.listagem')->with('disciplina', $disciplina);
     }
-
-
   }
 
 //teste comit atom
@@ -37,7 +35,10 @@ class DisciplinaController extends Controller
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
-      return view('telas.alunoenxerido');
+      //if aluno matriculado na disciplina {
+        return view('disciplinaaluno.listagem'); //}
+      //else
+       // return view('disciplinaaluno.matricular');
     }else {
       $disciplina = Disciplina::find($id);
       if(empty($disciplina)) {
@@ -59,7 +60,7 @@ class DisciplinaController extends Controller
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
-      return view('telas.alunoenxerido');
+      return view('telas.mensagem');
     }else {
           return view('disciplina.formulario')->with('p', $user);;
     }
@@ -69,7 +70,7 @@ class DisciplinaController extends Controller
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
-      return view('telas.alunoenxerido');
+      return view('telas.mensagem');
     }else {
       Disciplina::create(Request::all());
 
@@ -84,7 +85,7 @@ class DisciplinaController extends Controller
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
-      return view('telas.alunoenxerido');
+      return view('telas.mensagem');
     }else {
       $disciplina = Disciplina::find($id);
         if(empty($disciplina)) {
@@ -101,7 +102,7 @@ class DisciplinaController extends Controller
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
-      return view('telas.alunoenxerido');
+      return view('telas.mensagem');
     }else {
       $params = Request::all();
       $disciplina = new Disciplina();
@@ -123,7 +124,7 @@ class DisciplinaController extends Controller
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
-      return view('telas.alunoenxerido');
+      return view('telas.mensagem');
     }else {
       $disciplina = Disciplina::find($id);
       $disciplina->delete();
@@ -141,6 +142,18 @@ class DisciplinaController extends Controller
       $disciplina = Disciplina::all();
     return response()->json($disciplina);
   }
+
+//a função abaixo é só pra teste
+public function matricular()  {
+  $user = app('Illuminate\Contracts\Auth\Guard')->user();
+
+  if($user['professor']==0) {
+    return view('disciplinaaluno.matricular');
+  }else {
+        return view('disciplina.formulario')->with('p', $user);;
+  }
+}
+
 
 }
 
