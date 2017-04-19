@@ -15,6 +15,7 @@ class PostsController extends Controller
   ['only' => ['adiciona', 'remove']]);
 
 }*/
+/*
 public function lista($id)  {
 
 
@@ -23,19 +24,20 @@ public function lista($id)  {
     if($user['professor']==0) {
       return view('telas.alunoenxerido');
     }else {
-      $posts = Posts::all();
+      $posts = Posts::where('idDisciplina', '==', $id)->get();
+    //  $posts = Posts::all();
 
     $disciplina = Disciplina::find($id);
         return view('disciplina.detalhes',['id'=>$id,'posts'=> $posts,'d'=> $disciplina ]);
     }
 
   }
-
+*/
   public function mostra($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
-      return view('telas.alunoenxerido');
+      return view('telas.mensagem');
     }else {
       $posts = Posts::find($id);
       if(empty($posts)) {
@@ -51,7 +53,7 @@ public function lista($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
-      return view('telas.alunoenxerido');
+      return view('telas.mensagem');
     }else {
           return view('posts.formulario',['idDisciplina' => $idDisciplina]);
     }
@@ -61,10 +63,14 @@ public function lista($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
-      return view('telas.alunoenxerido');
+      return view('telas.mensagem');
     }else {
       Posts::create(Request::all());
+<<<<<<< HEAD
     return redirect()->action('DisciplinaController@mostra', $idDisciplina);
+=======
+    return redirect()->action('DisciplinaController@mostra',$idDisciplina);
+>>>>>>> origin/master
     }
 
 
@@ -74,7 +80,7 @@ public function lista($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
-      return view('telas.alunoenxerido');
+      return view('telas.mensagem');
     }else {
       $posts = Posts::find($id);
         if(empty($posts)) {
@@ -91,7 +97,7 @@ public function lista($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
-      return view('telas.alunoenxerido');
+      return view('telas.mensagem');
     }else {
       $params = Request::all();
       $posts = new Posts();
@@ -108,7 +114,7 @@ public function lista($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
-      return view('telas.alunoenxerido');
+      return view('telas.mensagem');
     }else {
       $posts = Posts::find($id);
       $posts->delete();
