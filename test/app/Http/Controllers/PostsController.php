@@ -66,7 +66,11 @@ public function lista($id)  {
       return view('telas.mensagem');
     }else {
       Posts::create(Request::all());
+<<<<<<< HEAD
+    return redirect()->action('DisciplinaController@mostra', $idDisciplina);
+=======
     return redirect()->action('DisciplinaController@mostra',$idDisciplina);
+>>>>>>> origin/master
     }
 
 
