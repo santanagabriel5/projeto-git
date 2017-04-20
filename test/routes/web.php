@@ -38,9 +38,26 @@ Route::get('/disciplina/atualizar/{id}','DisciplinaController@atualizar');
 
 Route::post('/disciplina/atualiza','DisciplinaController@atualiza');
 
+
 Route::get('/disciplina/remove/{id}','DisciplinaController@remove');
 
+Route::get('/disciplina/permitiracesso/{id}','DisciplinaController@permitiracesso');
+Route::get('/disciplina/negarcesso/{id}','DisciplinaController@negarcesso');
+
+
+
 Route::get('/disciplina/json', 'DisciplinaController@listaJson');
+
+Route::get('/disciplina/matricula/{id}','DisciplinaController@matricula');
+
+Route::get('/disciplina/matricular/{id}','DisciplinaController@matricular');
+
+Route::get('/disciplina/listaralunos/{id}','DisciplinaController@listaralunospendentes');
+
+
+
+
+
 // Posts
 
 

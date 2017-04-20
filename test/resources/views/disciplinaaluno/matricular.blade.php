@@ -1,5 +1,5 @@
 
-@extends('layout.principal')
+@extends('layout/principal(aluno)')
 
 @section('conteudo')
 <h1>Detalhes da disciplina: {{ $d->titulo or "nenhuma informacao contida" }} </h1>
@@ -15,7 +15,6 @@
 </li>
 </ul>
 
-  <button type="button" name="Matricular"><a href="#">Matricular nessa disciplina</a></button>
+  <button type="button" name="Matricular"><a href="{{action('DisciplinaController@matricular', $d->id)}}">Matricular nessa disciplina</a></button>
 
-@endif
 @stop

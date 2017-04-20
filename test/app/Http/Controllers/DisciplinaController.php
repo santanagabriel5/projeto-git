@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\DB;
 use Request;
 use App\Disciplina;
 use App\Posts;
+use App\DisciplinaAluno;
 use App\Http\Requests\DisciplinasRequest;
 
 
@@ -21,6 +22,7 @@ class DisciplinaController extends Controller
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
+      $disciplina = Disciplina::all();
       return view('disciplinaaluno.listagem')->with('disciplina', $disciplina);
     }else {
 
@@ -30,22 +32,45 @@ class DisciplinaController extends Controller
     }
   }
 
+
+
 //teste comit atom
   public function mostra($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
+    $disciplina = Disciplina::find($id);
+
     if($user['professor']==0) {
+
+
+      $DisciplinaAluno = DisciplinaAluno::where('idDisciplina', '=', $id , 'and' , 'IdAluno', '=',$user['id'] )->get();
+
+
+      if (isset($DisciplinaAluno[0]) == true) {
+
+      if ($DisciplinaAluno['0']["Acesso"]==0) {
+        return "O professor ainda nao autorizou a sua inscricao";
+      }else {
+        $posts = Posts::where('idDisciplina', '=', $id)->get();
+
+        return view('disciplinaaluno.detalhes(aluno)',['posts'=> $posts,'d'=> $disciplina ]);
+      }
+
+    }else {
+      return "Voce ainda nao se cadastrou nesse materia";
+    }
+
+
+
       //if aluno matriculado na disciplina {
-        return view('disciplinaaluno.detalhes',['posts'=> $posts,'d'=> $disciplina ]); //}
+        //return view('disciplinaaluno.detalhes',['posts'=> $posts,'d'=> $disciplina ]); //}
       //else
        // return view('disciplinaaluno.matricular');
     }else {
-      $disciplina = Disciplina::find($id);
       if(empty($disciplina)) {
       return "Essa disciplina não existe";
       }
       $posts = Posts::all();
-//=======
       $posts = Posts::where('idDisciplina', '=', $id)->get();
 
       //$posts = Posts::all();
@@ -136,23 +161,89 @@ class DisciplinaController extends Controller
 
   }
 
-  public function listaJson(){
+  public function matricula($id)  {
+    $user = app('Illuminate\Contracts\Auth\Guard')->user();
+    $disciplina = Disciplina::find($id);
+
+    if($user['professor']==0) {
+      return view('disciplinaaluno.matricular',['p' => $user, 'd' =>$disciplina ]);
+    }else {
+
+    /*  COMO ASSIM ? >>>>>*/return view('disciplina.formulario' ,['p' => $user, 'd' =>$disciplina ]);
+    }
+  }
+
+  public function matricular($iddisciplina)  {
+
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
-      $disciplina = Disciplina::all();
-    return response()->json($disciplina);
+    DisciplinaAluno::create(['IdDisciplina' => $iddisciplina, 'IdAluno' => $user['id'], 'Acesso' => 0]);
+
+    $disciplina = Disciplina::all();
+
+    return redirect()->action('DisciplinaController@lista')->with('p', $user);
+
+
+
   }
+
 
 //a função abaixo é só pra teste
-public function matricular()  {
-  $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
-  if($user['professor']==0) {
-    return view('disciplinaaluno.matricular');
-  }else {
-        return view('disciplina.formulario')->with('p', $user);;
+
+  public function listaralunospendentes($idmateria){
+
+  $idDisciplinas =  DB::select(DB::raw("SELECT Users.name, DisciplinaAluno.Id iddisciplinaaluno,DisciplinaAluno.IdDisciplina
+FROM Users , DisciplinaAluno
+WHERE DisciplinaAluno.idDisciplina = $idmateria
+AND Users.id = DisciplinaAluno.IdAluno AND DisciplinaAluno.acesso = 0 "));
+
+
+
+  //  $Alunos = DisciplinaAluno::where('idDisciplina', '=', $idmateria , 'and' , 'Acesso', '=', 0 )->get();
+
+    return view('disciplina.alunospendentes' , ['alunos' =>$idDisciplinas]);
+
   }
-}
+
+  public function permitiracesso($idDisciplinaAluno)  {
+    $user = app('Illuminate\Contracts\Auth\Guard')->user();
+
+    if($user['professor']==0) {
+      return view('telas.mensagem');
+    }else {
+
+      $DisciplinaAluno = DisciplinaAluno::find($idDisciplinaAluno);
+
+     $DisciplinaAluno-> Acesso = 1;
+
+   $DisciplinaAluno->save();
+
+      return  redirect()->action('DisciplinaController@listaralunospendentes' , ['idmateria' =>$DisciplinaAluno->IdDisciplina]);
+    }
+
+
+  }
+
+  public function negarcesso($idDisciplinaAluno)  {
+    $user = app('Illuminate\Contracts\Auth\Guard')->user();
+
+    if($user['professor']==0) {
+      return view('telas.mensagem');
+    }else {
+
+      $DisciplinaAluno = DisciplinaAluno::find($idDisciplinaAluno);
+
+
+      $DisciplinaAluno->delete();
+
+
+      return  redirect()->action('DisciplinaController@listaralunospendentes' , ['idmateria' =>$DisciplinaAluno->IdDisciplina]);
+    }
+
+
+  }
+
 
 }
  ?>

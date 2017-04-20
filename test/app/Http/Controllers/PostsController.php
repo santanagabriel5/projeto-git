@@ -35,11 +35,11 @@ public function lista($id)  {
 */
   public function mostra($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
+    $posts = Posts::find($id);
 
     if($user['professor']==0) {
-      return view('telas.mensagem');
+      return view('posts(aluno).detalhes')->with('po', $posts);
     }else {
-      $posts = Posts::find($id);
       if(empty($posts)) {
       return "Esse post não existe";
       }
@@ -66,11 +66,11 @@ public function lista($id)  {
       return view('telas.mensagem');
     }else {
       Posts::create(Request::all());
-<<<<<<< HEAD
+//<<<<<<< HEAD
     return redirect()->action('DisciplinaController@mostra', $idDisciplina);
-=======
+//=======
     return redirect()->action('DisciplinaController@mostra',$idDisciplina);
->>>>>>> origin/master
+//>>>>>>> origin/master
     }
 
 
