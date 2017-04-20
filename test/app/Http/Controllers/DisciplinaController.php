@@ -44,15 +44,15 @@ class DisciplinaController extends Controller
       if(empty($disciplina)) {
       return "Essa disciplina não existe";
       }
-<<<<<<< HEAD
       $posts = Posts::all();
-=======
+//=======
       $posts = Posts::where('idDisciplina', '=', $id)->get();
 
       //$posts = Posts::all();
->>>>>>> origin/master
+
 
       return view('disciplina.detalhes',['posts'=> $posts,'d'=> $disciplina ]);
+
     }
 
 
