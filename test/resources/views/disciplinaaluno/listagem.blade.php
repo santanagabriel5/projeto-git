@@ -1,4 +1,4 @@
-@extends('layout/principal')
+@extends('layout/principal(aluno)')
 
 @section('conteudo')
 
@@ -19,7 +19,7 @@
                 </a>
               </td>
               <td>
-                <a href="{{action('DisciplinaController@matricular', $d->id)}}">
+                <a href="{{action('DisciplinaController@matricula', $d->id)}}">
                   Matricular nessa disciplina
                 </a>
               </td>

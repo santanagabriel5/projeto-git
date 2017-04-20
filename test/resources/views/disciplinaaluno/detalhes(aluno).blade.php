@@ -27,9 +27,6 @@
       <li>
         <a href="{{action('PostsController@lista')}}">Posts</a>
       </li>
-      <li>
-        <a href="{{action('PostsController@novo', $d->id)}}"> Novo </a>
-      </li>
     </ul>
   </div>
 </nav>
