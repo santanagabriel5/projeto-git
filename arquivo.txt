@@ -7,13 +7,4 @@ fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in c
 hello world
 
 
-
-TESTE PELO AMOR DE JAH DA CERTO
-
-
-<<<<<<< HEAD
-
-TESTE DE MERGE DO GIT
-=======
-TESTE 20:44
->>>>>>> 30d3e80d358380972a497ff5ef991e63b349ba37
+TESTETETESTETETESTETETESTETETESTETETESTETETESTETE
