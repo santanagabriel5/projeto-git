@@ -13,6 +13,9 @@
 <li>
 <b>Fim:</b> {{ $d->fim or "nenhuma informacao contida" }}
 </li>
+<li>
+<b> <a href="{{action('DisciplinaController@listaralunospendentes', $d->id)}}">Alunos pendentes</a></b>
+</li>
 </ul>
 <p> Posts</p>
 
