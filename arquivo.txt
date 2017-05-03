@@ -8,16 +8,4 @@ hello world
 
 
 
-TESTE PELO AMOR DE JAH DA CERTO
-
-
-<<<<<<< HEAD
-TESTE 21:18
-=======
-<<<<<<< HEAD
-
-TESTE DE MERGE DO GIT
-=======
-TESTE 20:44
->>>>>>> 2800d3c67a1a75835a0e3c353d37255fcc4404a0
->>>>>>> 7158d5a7ca06ffde0f7d3841d70c7b34017c082e
+TESTE PELO AMOR DE JAH TA CERTO
