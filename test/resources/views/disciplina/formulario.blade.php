@@ -7,6 +7,8 @@
 
   <input type="hidden"  name="codProfessor" value= {{$p->id}} />
 
+
+
   <div class="form-group">
     <label>Titulo</label>
     <input name="titulo" class="form-control">

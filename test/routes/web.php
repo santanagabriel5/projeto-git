@@ -77,4 +77,11 @@ Route::get('/disciplina/post/remove/{id}','PostsController@remove');
 
 Route::get('/disciplina/posts/json', 'PostsController@listaJson');
 
-Route::post('/comentarios/{id}', 'PostsController@AdicionarComentario');
+//Route::post('/comentarios/{id}', 'PostsController@AdicionarComentario');
+
+Route::post('/comentarios/cadastro/{id}', 'PostsController@AdicionarComentario');
+
+//TESTE DE UP DE ARQUIVO
+
+Route::get('image-upload-with-validation',['as'=>'getimage','uses'=>'PostsController@getImage']);
+Route::post('image-upload-with-validation',['as'=>'postimage','uses'=>'PostsController@postImage']);

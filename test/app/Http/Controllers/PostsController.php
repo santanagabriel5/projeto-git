@@ -4,6 +4,10 @@ use Request;
 use App\Posts;
 use App\DisciplinaController;
 use App\Disciplina;
+use App\Comentarios;
+
+
+
 
 
 
@@ -32,6 +36,8 @@ public function lista($id)  {
     }
 
   }
+
+
 
   public function mostra($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
@@ -67,7 +73,7 @@ public function lista($id)  {
       return view('telas.mensagem');
     }else {
       Posts::create(Request::all());
-      
+
     return redirect()->action('DisciplinaController@mostra', $idDisciplina);
     }
 
@@ -130,18 +136,49 @@ public function lista($id)  {
       $posts = Posts::all();
     return response()->json($posts);
   }
+
   public function AdicionarComentario($id){
 
-    comentarios::create(Request::all());
+    Comentarios::create(Request::all());
     // $comentario = new comentarios;
     // $comentario->post_id = Input::get('post_id');
     // $comentario->nome = Input::get('nome');
     // $comentario->conteudo = Input::get('conteudo');
     // $comentario->save();
-    return redirect()->action('PostsController@mostra, $id');
+    return redirect()->action('PostsController@mostra', $id);
   }
 
-}
+  //TEST DE UP DE ARQUIVO
+
+  public function getImage()
+  {
+      return view('telas.test');
+  }
+  /**
+  * Manage Post Request
+  *
+  * @return void
+  */
+  public function postImage(Request $request)
+  {
+      $this->validate($request, [
+          'image_file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+      ]);
+      $imageName = time().'.'.$request->image_file->getClientOriginalExtension();
+      $request->image_file->move(public_path('images'), $imageName);
+      return back()
+          ->with('success','You have successfully upload images.')
+          ->with('image',$imageName);
+  }
+
+  }
+
+
+
+
+
+
+
 
 
  ?>
