@@ -15,7 +15,7 @@ class PostsController extends Controller
   ['only' => ['adiciona', 'remove']]);
 
 }*/
-/*
+
 public function lista($id)  {
 
 
@@ -32,18 +32,19 @@ public function lista($id)  {
     }
 
   }
-*/
+
   public function mostra($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
     $posts = Posts::find($id);
+    $comentarios = comentarios::where('post_id', '=', $posts->id)->get();
 
     if($user['professor']==0) {
-      return view('posts(aluno).detalhes')->with('po', $posts);
+      return view('posts(aluno).detalhes')->with('po', $posts)->with('comentarios', $comentarios);
     }else {
       if(empty($posts)) {
       return "Esse post não existe";
       }
-      return view('posts.detalhes')->with('po', $posts);
+      return view('posts.detalhes')->with('po', $posts)->with('comentarios', $comentarios);
     }
 
   }
@@ -66,11 +67,8 @@ public function lista($id)  {
       return view('telas.mensagem');
     }else {
       Posts::create(Request::all());
-//<<<<<<< HEAD
+      
     return redirect()->action('DisciplinaController@mostra', $idDisciplina);
-//=======
-    return redirect()->action('DisciplinaController@mostra',$idDisciplina);
-//>>>>>>> origin/master
     }
 
 
@@ -131,6 +129,16 @@ public function lista($id)  {
 
       $posts = Posts::all();
     return response()->json($posts);
+  }
+  public function AdicionarComentario($id){
+
+    comentarios::create(Request::all());
+    // $comentario = new comentarios;
+    // $comentario->post_id = Input::get('post_id');
+    // $comentario->nome = Input::get('nome');
+    // $comentario->conteudo = Input::get('conteudo');
+    // $comentario->save();
+    return redirect()->action('PostsController@mostra, $id');
   }
 
 }

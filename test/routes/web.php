@@ -76,3 +76,5 @@ Route::post('/disciplina/posts/atualiza','PostsController@atualiza');
 Route::get('/disciplina/post/remove/{id}','PostsController@remove');
 
 Route::get('/disciplina/posts/json', 'PostsController@listaJson');
+
+Route::post('/comentarios/{id}', 'PostsController@AdicionarComentario');
