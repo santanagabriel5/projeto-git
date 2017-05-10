@@ -71,13 +71,12 @@ class DisciplinaController extends Controller
       return "Essa disciplina não existe";
       }
       $posts = Posts::all();
+
       $posts = Posts::where('idDisciplina', '=', $id)->get();
 
       //$posts = Posts::all();
 
-
       return view('disciplina.detalhes',['posts'=> $posts,'d'=> $disciplina ]);
-
     }
 
   }
@@ -215,9 +214,13 @@ AND Users.id = DisciplinaAluno.IdAluno AND DisciplinaAluno.acesso = 0 "));
 
       $DisciplinaAluno = DisciplinaAluno::find($idDisciplinaAluno);
 
-     $DisciplinaAluno-> Acesso = 1;
+    //$DisciplinaAluno->Acesso = 1;
 
-   $DisciplinaAluno->save();
+     //$DisciplinaAluno->save();
+
+     DB::table('disciplinaaluno')
+            ->where('id', $idDisciplinaAluno)
+            ->update(['Acesso' => 1]);
 
       return  redirect()->action('DisciplinaController@listaralunospendentes' , ['idmateria' =>$DisciplinaAluno->IdDisciplina]);
     }
@@ -234,8 +237,8 @@ AND Users.id = DisciplinaAluno.IdAluno AND DisciplinaAluno.acesso = 0 "));
 
       $DisciplinaAluno = DisciplinaAluno::find($idDisciplinaAluno);
 
+      DB::table('disciplinaaluno')->where('Id', '=', $idDisciplinaAluno)->delete();
 
-      $DisciplinaAluno->delete();
 
 
       return  redirect()->action('DisciplinaController@listaralunospendentes' , ['idmateria' =>$DisciplinaAluno->IdDisciplina]);
