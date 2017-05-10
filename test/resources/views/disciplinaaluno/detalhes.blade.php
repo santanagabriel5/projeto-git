@@ -2,6 +2,7 @@
 @extends('layout/principal(aluno)')
 
 @section('conteudo')
+
 <h1>Detalhes da disciplina: {{ $d->titulo or "nenhuma informacao contida" }} </h1>
 <ul>
 <li>
@@ -14,7 +15,7 @@
 <b>Fim:</b> {{ $d->fim or "nenhuma informacao contida" }}
 </li>
 </ul>
-<p> Posts</p>
+
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">

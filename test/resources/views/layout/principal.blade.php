@@ -16,7 +16,9 @@
             </a>
           </div>
           <ul class="nav navbar-nav navbar-right">
+
             <li>
+
               <a href="{{action('DisciplinaController@lista')}}">Disciplinas</a>
             </li>
             <li>
@@ -28,7 +30,7 @@
       @yield('conteudo')
       <footer class="footer">
         <p>©AVA
-        <a href="{{action('HomeController@index')}}"> Voltar </a></p>
+    
       </footer>
     </div>
   </body>

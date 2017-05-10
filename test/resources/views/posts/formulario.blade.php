@@ -9,6 +9,8 @@
 
   <input type="hidden"  name="idDisciplina" value= {{$idDisciplina}} />
 
+ </div>
+
   <div class="form-group">
     <label>Titulo</label>
     <input name="titulo" class="form-control">
@@ -20,4 +22,6 @@
 
   <button type="submit" class="btn btn-primary btn-block">Submit</button>
   </form>
+
+<br><br> <button type="button" class="btn btn-primary">Voltar</button>
 @stop

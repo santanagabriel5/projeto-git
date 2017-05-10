@@ -61,7 +61,7 @@ Route::get('/disciplina/listaralunos/{id}','DisciplinaController@listaralunospen
 // Posts
 
 
-Route::get('/disciplina/detalhes','PostsController@lista');
+Route::get('/disciplina/posts/detalhes','PostsController@lista');
 
 Route::get('/disciplina/posts/detalhes/{id}','PostsController@mostra')->where('id','[0-9]+');
 
