@@ -25,7 +25,6 @@
       @yield('conteudo')
       <footer class="footer">
         <p>©AVA
-        <a href="{{action('HomeController@index')}}"> Voltar </a></p>
       </footer>
     </div>
   </body>

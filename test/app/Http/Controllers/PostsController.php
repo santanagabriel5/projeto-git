@@ -28,6 +28,7 @@ public function lista($id)  {
     //  $posts = Posts::all();
 
     $disciplina = Disciplina::find($id);
+
         return view('disciplina.detalhes',['id'=>$id,'posts'=> $posts,'d'=> $disciplina ]);
     }
 
