@@ -67,7 +67,7 @@ public function lista($id)  {
       return view('telas.mensagem');
     }else {
       Posts::create(Request::all());
-      
+
     return redirect()->action('DisciplinaController@mostra', $idDisciplina);
     }
 
