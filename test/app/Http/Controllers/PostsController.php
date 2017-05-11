@@ -28,6 +28,7 @@ public function lista($id)  {
     //  $posts = Posts::all();
 
     $disciplina = Disciplina::find($id);
+
         return view('disciplina.detalhes',['id'=>$id,'posts'=> $posts,'d'=> $disciplina ]);
     }
 
@@ -67,7 +68,7 @@ public function lista($id)  {
       return view('telas.mensagem');
     }else {
       Posts::create(Request::all());
-      
+
     return redirect()->action('DisciplinaController@mostra', $idDisciplina);
     }
 

@@ -3,6 +3,7 @@
 
 @section('conteudo')
 <h1>Detalhes da disciplina: {{ $d->titulo or "nenhuma informacao contida" }} </h1>
+
 <ul>
 <li>
 <b>Carga Horária:</b> {{ $d->cargah or "nenhuma informacao contida" }}
@@ -17,7 +18,9 @@
 <b> <a href="{{action('DisciplinaController@listaralunospendentes', $d->id)}}">Alunos pendentes</a></b>
 </li>
 </ul>
-<p> Posts</p>
+<a href="{{action('DisciplinaController@lista')}}">
+<button type="button" class="btn btn-primary">Voltar as Disciplinas</button></a>
+<br><br>
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
