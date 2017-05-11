@@ -18,8 +18,10 @@
 <b> <a href="{{action('DisciplinaController@listaralunospendentes', $d->id)}}">Alunos pendentes</a></b>
 </li>
 </ul>
+ <div align="right">
 <a href="{{action('DisciplinaController@lista')}}">
 <button type="button" class="btn btn-primary">Voltar as Disciplinas</button></a>
+</div>
 <br><br>
 
 <nav class="navbar navbar-default">
