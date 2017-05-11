@@ -29,9 +29,13 @@
                 </a>
               </td>
             </tr>
+
           @endforeach
         </table>
       @endif
-
+      <div align="left">
+      <a href="{{action('HomeController@index')}}">
+          <button type="button" class="btn btn-primary">Voltar </button></a>
+    </div>
 
 @stop

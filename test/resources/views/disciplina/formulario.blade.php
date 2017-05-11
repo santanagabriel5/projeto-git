@@ -2,6 +2,10 @@
 @section('conteudo')
 
 <h1>Cadastrar Disciplina</h1>
+<div align="right">
+<a href="{{action('DisciplinaController@lista')}}">
+<button type="button" class="btn btn-primary">Voltar as Disciplinas</button></a>
+</div>
 <form action="/disciplina/adiciona" method="post">
   <input type="hidden"  name="_token" value="{{{ csrf_token() }}}" />
 

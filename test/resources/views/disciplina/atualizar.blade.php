@@ -2,6 +2,10 @@
 @section('conteudo')
 
 <h1>Atualizar produto</h1>
+<div align="right">
+<a href="{{action('DisciplinaController@lista')}}">
+<button type="button" class="btn btn-primary">Voltar as Disciplinas</button></a>
+</div>
 <form action="/disciplina/atualiza" method="post">
 
   <input type="hidden"
@@ -37,6 +41,7 @@
 <input name="fim" type="date" class="form-control" value = "{{$d->fim}}">
 </div>
 
-<button type="submit" class="btn btn-primary btn-block">Submit</button>
+<button type="submit" class="btn btn-primary btn-block">Submit</button><Br>
+
 </form>
 @stop
