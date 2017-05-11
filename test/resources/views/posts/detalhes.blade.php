@@ -8,10 +8,10 @@
 </li>
 </ul>
 
-<form action="/comentarios/{{$post->id}}" method="post">
+<form action="/comentarios/{{$po->id}}" method="post">
   <input type="hidden"  name="_token" value="{{{ csrf_token() }}}" />
 
-  <input type="hidden"  name="post_id" value= {{$post->id}} />
+  <input type="hidden"  name="post_id" value= {{$po->id}} />
 
   <div class="form-group">
     <label>Nome:</label>

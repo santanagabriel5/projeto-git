@@ -4,6 +4,7 @@ use Request;
 use App\Posts;
 use App\DisciplinaController;
 use App\Disciplina;
+use App\Comentarios;
 
 
 
