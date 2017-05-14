@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
         $table->increments('id');
         $table->string('titulo');
         $table->string('descricao');
+        $table->date('datacriacao');
         $table->integer('idDisciplina');
       });
     }

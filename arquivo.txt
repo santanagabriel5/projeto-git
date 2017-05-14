@@ -18,3 +18,11 @@ descobrir como resolver o conflito de arquivos no git no atom ou linha de comand
 
 TESTES PELO AMOR DE JAH DA CERTO
 >>>>>>> origin/master
+
+
+
+
+
+
+https://laravel.com/docs/5.3/upgrade UPPDATE PARA USAR Form
+composer update RODAR DEPOIS

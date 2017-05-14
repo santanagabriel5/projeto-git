@@ -4,15 +4,38 @@
 <h1>Detalhes de Posts: {{ $po->titulo or "nenhuma informacao contida" }} </h1>
 <ul>
 <li>
-<b>Descricao:</b> {{ $po->descricao or "nenhuma informacao contida" }}
+  Data de postagem: {{ $po->datacriacao or "nenhuma informacao contida" }}
+
 </li>
 </ul>
+{{ $po->descricao or "nenhuma informacao contida" }}
 
-<form action="/comentarios/{{$po->id}}" method="post">
+
+@if(empty($comentarios))
+  <div class="alert alert-danger">
+    Não há nenhum comentario.
+  </div>
+@else
+  <table class="table table-striped table-bordered table-hover">
+    @foreach ($comentarios as $c)
+      <tr>
+        <td>{{$c->nome}}</td><td>{{$c->conteudo}}</td>
+      </tr>
+    @endforeach
+  </table>
+@endif
+
+
+<form action="{{action('PostsController@AdicionarComentario', $po->id)}}" method="post">
   <input type="hidden"  name="_token" value="{{{ csrf_token() }}}" />
 
+<<<<<<< HEAD
   <input type="hidden"  name="post_id" value= "{{$po->id}}" />
 
+=======
+  <input type="hidden"  name="post_id" value= {{$po->id}} />
+<br>  <center>Comentarios</center><br>
+>>>>>>> 54fa547a45243890a831fe951a40dfd6f1610a45
   <div class="form-group">
     <label>Nome:</label>
     <input name="nome" class="form-control">

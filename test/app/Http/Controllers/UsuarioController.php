@@ -27,7 +27,7 @@ class UsuarioController extends Controller
 
     public function test()
     {
-        return view('welcome');
+        return view('telas.test');
     }
 
     public function disciplina()

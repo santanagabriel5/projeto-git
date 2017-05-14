@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateComentariosTable extends Migration
+class UploadTables extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateComentariosTable extends Migration
      */
     public function up()
     {
-      Schema::create('comentarios', function (Blueprint $table){
+
+      Schema::create('upload', function(Blueprint $table) {
         $table->increments('id');
-        $table->string('nome');
-        $table->integer('post_id');
-        $table->string('conteudo');
+        $table->string('nomearquivo');
+        $table->string('mime');
+        $table->string('original_filename');
+        $table->timestamps();
       });
+        //
     }
 
     /**
@@ -28,6 +31,8 @@ class CreateComentariosTable extends Migration
      */
     public function down()
     {
+      Schema::drop('upload');
+
         //
     }
 }
