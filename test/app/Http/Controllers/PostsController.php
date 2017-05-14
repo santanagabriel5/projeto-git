@@ -135,11 +135,6 @@ public function lista($id)  {
   public function AdicionarComentario($id){
 
     comentarios::create(Request::all());
-    // $comentario = new comentarios;
-    // $comentario->post_id = Input::get('post_id');
-    // $comentario->nome = Input::get('nome');
-    // $comentario->conteudo = Input::get('conteudo');
-    // $comentario->save();
     return redirect()->action('PostsController@mostra, $id');
   }
 
