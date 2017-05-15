@@ -63,7 +63,7 @@ Você não tem nenhuma seção
   </a>
 </td>
 <td>
-  <a href="{{action('SecaoController@atualizar', $se->id)}}">
+  <a href="{{action('SecaoController@atualizar', $d->id)}}">
     <span class="glyphicon glyphicon-pencil"></span>
   </a>
 </td>

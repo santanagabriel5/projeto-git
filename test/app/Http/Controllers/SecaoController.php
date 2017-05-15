@@ -90,7 +90,7 @@ class SecaoController extends Controller
       }
     }
 
-    public function atualiza()  {
+    public function atualiza($id)  {
       $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
       if($user['professor']==0) {
@@ -103,7 +103,7 @@ class SecaoController extends Controller
 
         $secao->save();
 
-       return redirect()->action('SecaoController@lista')->withInput(Request::only('titulo','atualiza'));
+       return redirect()->action('DisciplinaController@mostra', $id);
       }
     }
 
@@ -114,9 +114,10 @@ class SecaoController extends Controller
         return view('telas.mensagem');
       }else {
         $secao = Secao::find($id);
+        $disciplina=Disciplina::find($secao['idDisciplina']);
         $secao->delete();
         return redirect()
-        ->action('SecaoController@lista');
+        ->action('DisciplinaController@mostra' ,$disciplina['id']);
       }
 
 

@@ -1,5 +1,5 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-@extends('layout/principal')
+@extends('layout.principal')
 @section('conteudo')
 
       <h1>Listagem de Disciplina</h1>

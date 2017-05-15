@@ -124,7 +124,7 @@ class DisciplinaController extends Controller
 
   }
 
-  public function atualiza()  {
+  public function atualiza($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {

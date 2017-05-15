@@ -2,7 +2,8 @@
 @section('conteudo')
 
 <h1>Atualizar Secao</h1>
-<form action="/disciplina/secao/atualiza" method="post">
+<form action="/disciplina/secao/atualiza/{{$se->id}}" method="post">
+
 
   <input type="hidden"
   name="_token" value="{{{ csrf_token() }}}" />
@@ -10,7 +11,6 @@
   <input type="hidden"
   name="atualiza" value="1" />
 
-  <input type="hidden"  name="codProfessor" value=  {{$se->id}}  />
 
   <input type="hidden"
   name="id" value="{{$se->id}}" />

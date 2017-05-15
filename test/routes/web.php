@@ -88,7 +88,7 @@ Route::post('/disciplina/secao/adiciona/{id}','SecaoController@adiciona');
 
 Route::get('/disciplina/secao/atualizar/{id}','SecaoController@atualizar');
 
-Route::post('/disciplina/secao/atualiza','SecaoController@atualiza');
+Route::post('/disciplina/secao/atualiza/{id}','SecaoController@atualiza');
 
 Route::get('/disciplina/secao/remove/{id}','SecaoController@remove');
 
