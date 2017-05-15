@@ -101,6 +101,5 @@ Route::get('/disciplina/secao/json', 'SecaoController@listaJson');
 Route::post('/comentarios/cadastro/{id}', 'PostsController@AdicionarComentario');
 
 //TESTE DE UP DE ARQUIVO
-
-Route::get('image-upload-with-validation',['as'=>'getimage','uses'=>'PostsController@getImage']);
-Route::post('image-upload-with-validation',['as'=>'postimage','uses'=>'PostsController@postImage']);
+Route::post('/avatars', 'UploadController@uploaddearquivo');
+Route::get('/telas/test', 'UploadController@tela');
