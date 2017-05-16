@@ -29,16 +29,22 @@ $user = app('Illuminate\Contracts\Auth\Guard')->user();
 }
   public function mostra($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
-    $posts = Posts::find($id);
-    $comentarios = comentarios::where('post_id', '=', $posts->id)->get();
 
+$posts = Posts::where('idSecao', '=', $id)->get();
     if($user['professor']==0) {
-      return view('posts(aluno).detalhes')->with('po', $posts)->with('comentarios', $comentarios);
+    
+      $comentarios = Comentarios::where('post_id', '=', $id)->get();
+
+      return view('posts(aluno).detalhes')->with('po', $posts)->with('c', $comentarios);
+
     }else {
       if(empty($posts)) {
+
       return "Esse post não existe";
       }
-      return view('posts.detalhes')->with('po', $posts)->with('comentarios', $comentarios);
+      $comentarios = Comentarios::where('post_id', '=', $id)->get();
+
+      return view('posts.detalhes')->with('po', $posts)->with('c', $comentarios);
     }
 
   }
@@ -70,11 +76,12 @@ $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
   public function atualizar($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
-
+  //  $posts = Posts::find($id);
+   //$posts = Posts::where('idSecao', '=', $id)->get();
     if($user['professor']==0) {
       return view('telas.mensagem');
     }else {
-      $posts = Posts::find($id);
+  $posts = Posts::find($id);
         if(empty($posts)) {
         return "Esse post não existe";
         }

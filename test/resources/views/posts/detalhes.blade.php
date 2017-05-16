@@ -5,10 +5,10 @@
 <ul>
 <li>
 Data de postagem: {{ $po->datacriacao or "nenhuma informacao contida" }}
-
+=
 </li>
 </ul>
-{{ $po->descricao or "nenhuma informacao contida" }}
+Detalhes: {{ $po->descricao or "nenhuma informacao contida" }}
 
 
 @if(empty($comentarios))
@@ -21,11 +21,12 @@ Data de postagem: {{ $po->datacriacao or "nenhuma informacao contida" }}
       <tr>
         <td>{{$c->nome}}</td><td>{{$c->conteudo}}</td>
       </tr>
-    @endforeach
-  </table>
-@endif
 
-<form action="{{action('PostsController@AdicionarComentario',po->id)}}" method="post">
+  </table>
+
+ @endforeach
+
+<form action="{{action('PostsController@AdicionarComentario',$po->id)}}" method="post">
   <input type="hidden"  name="_token" value="{{{ csrf_token() }}}" />
 
   <input type="hidden"  name="post_id" value= {{$po->id}} />
@@ -41,4 +42,6 @@ Data de postagem: {{ $po->datacriacao or "nenhuma informacao contida" }}
 
   <button type="submit" class="btn btn-primary btn-block">Salvar</button>
   </form>
+@endif
+
 @endsection

@@ -21,7 +21,7 @@
 <label>Titulo</label>
 <input name="titulo" class="form-control" value = "{{$po->titulo}}">
 
-</div>
+</div>  
 <div class="form-group">
 <label>Descricao</label>
 <input name="descricao" class="form-control" value = "{{$po->descricao}}">
