@@ -1,4 +1,4 @@
-
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 @extends('layout.principal(aluno)')
 @section('conteudo')
 <h1>Detalhes de Posts: {{ $po->titulo or "nenhuma informacao contida" }} </h1>

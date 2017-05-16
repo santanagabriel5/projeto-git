@@ -9,6 +9,8 @@
 
                 <div class="panel-body">
                     Você está Logado
+                    <br><br><a  href="{{action('DisciplinaController@lista')}}">
+                          Disciplinas
                 </div>
             </div>
         </div>

@@ -37,7 +37,8 @@
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                         AVA
-                    </a>
+                  
+
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">

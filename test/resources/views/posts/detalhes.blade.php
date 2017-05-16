@@ -1,10 +1,10 @@
-
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 @extends('layout.principal')
 @section('conteudo')
 <h1>Detalhes de Posts: {{ $po->titulo or "nenhuma informacao contida" }} </h1>
 <ul>
 <li>
-  Data de postagem: {{ $po->datacriacao or "nenhuma informacao contida" }}
+Data de postagem: {{ $po->datacriacao or "nenhuma informacao contida" }}
 
 </li>
 </ul>
@@ -25,8 +25,7 @@
   </table>
 @endif
 
-
-<form action="{{action('PostsController@AdicionarComentario', $po->id)}}" method="post">
+<form action="{{action('PostsController@AdicionarComentario',po->id)}}" method="post">
   <input type="hidden"  name="_token" value="{{{ csrf_token() }}}" />
 
   <input type="hidden"  name="post_id" value= {{$po->id}} />
@@ -40,6 +39,6 @@
     <textarea rows="4" cols="40"  name="conteudo" class="form-control"/></textarea>
   </div>
 
-  <button type="submit" class="btn btn-primary btn-block">Submit</button>
+  <button type="submit" class="btn btn-primary btn-block">Salvar</button>
   </form>
 @endsection

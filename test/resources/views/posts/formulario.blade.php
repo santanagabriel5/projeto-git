@@ -2,12 +2,12 @@
 @section('conteudo')
 
 <h1>Cadastrar Posts</h1>
-<form action="/disciplina/posts/adiciona/{{$idDisciplina}}" method="post">
+<form action="/disciplina/secao/posts/adiciona/{{$idSecao}}" method="post">
   <input type="hidden"  name="_token" value="{{{ csrf_token() }}}" />
 
   <input type="hidden"  name="datacriacao" value= {{date('Y-m-d')}} />
 
-  <input type="hidden"  name="idDisciplina" value= {{$idDisciplina}} />
+  <input type="hidden"  name="idSecao" value= {{$idSecao}} />
 
  </div>
 

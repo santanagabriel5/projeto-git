@@ -16,9 +16,8 @@ Route::get('/test', 'UsuarioController@test');
 Route::get('/hello', 'UsuarioController@hello');
 
 
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Auth::routes();
@@ -61,21 +60,41 @@ Route::get('/disciplina/listaralunos/{id}','DisciplinaController@listaralunospen
 // Posts
 
 
-Route::get('/disciplina/posts/detalhes','PostsController@lista');
+Route::get('/disciplina/secao/posts/detalhes','PostsController@lista');
 
-Route::get('/disciplina/posts/detalhes/{id}','PostsController@mostra')->where('id','[0-9]+');
+Route::get('/disciplina/secao/posts/detalhes/{id}','PostsController@mostra')->where('id','[0-9]+');
 
-Route::get('/disciplina/posts/novo/{id}','PostsController@novo');
+Route::get('/disciplina/secao/posts/novo/{id}','PostsController@novo');
 
-Route::post('/disciplina/posts/adiciona/{id}','PostsController@adiciona');
+Route::post('/disciplina/secao/posts/adiciona/{id}','PostsController@adiciona');
 
-Route::get('/disciplina/posts/atualizar/{id}','PostsController@atualizar');
+Route::get('/disciplina/secao/posts/atualizar/{id}','PostsController@atualizar');
 
-Route::post('/disciplina/posts/atualiza','PostsController@atualiza');
+Route::post('/disciplina/secao/posts/atualiza','PostsController@atualiza');
 
-Route::get('/disciplina/post/remove/{id}','PostsController@remove');
+Route::get('/disciplina/secao/post/remove/{id}','PostsController@remove');
 
-Route::get('/disciplina/posts/json', 'PostsController@listaJson');
+Route::get('/disciplina/secao/posts/json', 'PostsController@listaJson');
+
+// Secao
+
+Route::get('/disciplina/detalhes','SecaoController@lista');
+
+Route::get('/disciplina/secao/detalhes/{id}','SecaoController@mostra')->where('id','[0-9]+');
+
+Route::get('/disciplina/secao/novo/{id}','SecaoController@novo');
+
+Route::post('/disciplina/secao/adiciona/{id}','SecaoController@adiciona');
+
+Route::get('/disciplina/secao/atualizar/{id}','SecaoController@atualizar');
+
+Route::post('/disciplina/secao/atualiza','SecaoController@atualiza');
+
+Route::get('/disciplina/secao/remove/{id}','SecaoController@remove');
+
+Route::get('/disciplina/secao/json', 'SecaoController@listaJson');
+
+
 
 //Route::post('/comentarios/{id}', 'PostsController@AdicionarComentario');
 

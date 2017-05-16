@@ -1,4 +1,4 @@
-
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 @extends('layout/principal(aluno)')
 
 @section('conteudo')
@@ -14,41 +14,42 @@
 <b>Fim:</b> {{ $d->fim or "nenhuma informacao contida" }}
 </li>
 </ul>
-<p> Posts</p>
-
+<div align="right">
+<a href="{{action('DisciplinaController@lista')}}">
+<button type="button" class="btn btn-primary">Voltar as Disciplinas</button></a>
+</div>
+<br><BR>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="{{action('DisciplinaController@mostra', $d->id)}}">
-        Posts
-      </a>
-    </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-        <a href="{{action('PostsController@lista')}}">Posts</a>
-      </li>
-    </ul>
-  </div>
+ Seção
+</a>
+</div>
+<ul class="nav navbar-nav navbar-right">
+<li>
+<a href="{{action('SecaoController@lista')}}">Secão</a>
+</li>
+</ul>
+</div>
 </nav>
 
-
-@if(empty($posts))
-  <div class="alert alert-danger">
-    Você não tem nenhum post
-  </div>
+@if(empty($secao))
+<div class="alert alert-danger">
+ Não tem nenhuma seção
+</div>
 @else
-  <table class="table table-striped table-bordered table-hover">
-    @foreach ($posts as $po)
-      <tr>
-        <td>{{$po->titulo}}</td>
+<table class="table table-striped table-bordered table-hover">
+@foreach ($secao as $se)
+<tr>
+<td>{{$se->titulo}}</td>
 
-        <td>
-          <a href="{{action('PostsController@mostra', $po->id)}}">
-            <span class="glyphicon glyphicon-search"></span>
-          </a>
-        </td>
-      </tr>
-    @endforeach
-  </table>
+<td>
+  <a href="{{action('SecaoController@mostra', $se->id)}}">
+    <span class="glyphicon glyphicon-search"></span>
+  </a>
+</tr>
+@endforeach
+</table>
 @endif
 @stop

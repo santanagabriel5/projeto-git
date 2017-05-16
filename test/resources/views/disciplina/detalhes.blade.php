@@ -1,6 +1,5 @@
-
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 @extends('layout.principal')
-
 @section('conteudo')
 <h1>Detalhes da disciplina: {{ $d->titulo or "nenhuma informacao contida" }} </h1>
 
@@ -24,52 +23,52 @@
 </div>
 <br><br>
 
-<nav class="navbar navbar-default">
+ <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="{{action('DisciplinaController@mostra', $d->id)}}">
-        Posts
-      </a>
-    </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-        <a href="{{action('PostsController@lista')}}">Posts</a>
-      </li>
-      <li>
-        <a href="{{action('PostsController@novo', $d->id)}}"> Novo </a>
-      </li>
-    </ul>
-  </div>
+     <a class="navbar-brand" href="{{action('DisciplinaController@mostra', $d->id)}}">
+
+Secão
+</a>
+</div>
+<ul class="nav navbar-nav navbar-right">
+<li>
+<a href="{{action('SecaoController@lista')}}">Secao</a>
+</li>
+<li>
+<a href="{{action('SecaoController@novo', $d->id)}}"> Novo </a>
+</li>
+</ul>
+</div>
 </nav>
 
-
-@if(empty($posts))
-  <div class="alert alert-danger">
-    Você não tem nenhum post
-  </div>
+@if(empty($secao))
+<div class="alert alert-danger">
+Você não tem nenhuma seção
+</div>
 @else
-  <table class="table table-striped table-bordered table-hover">
-    @foreach ($posts as $po)
-      <tr>
-        <td>{{$po->titulo}}</td>
+<table class="table table-striped table-bordered table-hover">
+@foreach ($secao as $se)
+<tr>
+<td>{{$se->titulo}}</td>
 
-        <td>
-          <a href="{{action('PostsController@mostra', $po->id)}}">
-            <span class="glyphicon glyphicon-search"></span>
-          </a>
-        </td>
-        <td>
-          <a href="{{action('PostsController@remove', $po->id)}}">
-            <span class="glyphicon glyphicon-trash"></span>
-          </a>
-        </td>
-        <td>
-          <a href="{{action('PostsController@atualizar', $po->id)}}">
-            <span class="glyphicon glyphicon-pencil"></span>
-          </a>
-        </td>
-      </tr>
-    @endforeach
-  </table>
+<td>
+  <a href="{{action('SecaoController@mostra', $se->id)}}">
+    <span class="glyphicon glyphicon-search"></span>
+  </a>
+</td>
+<td>
+  <a href="{{action('SecaoController@remove', $se->id)}}">
+    <span class="glyphicon glyphicon-trash"></span>
+  </a>
+</td>
+<td>
+  <a href="{{action('SecaoController@atualizar', $se->id)}}">
+    <span class="glyphicon glyphicon-pencil"></span>
+  </a>
+</td>
+</tr>
+@endforeach
+</table>
 @endif
 @stop

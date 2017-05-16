@@ -3,9 +3,9 @@ use Illuminate\Support\Facades\DB;
 use Request;
 use App\Disciplina;
 use App\Posts;
+use App\Secao;
 use App\DisciplinaAluno;
 use App\Http\Requests\DisciplinasRequest;
-
 
 
 class DisciplinaController extends Controller
@@ -51,16 +51,15 @@ class DisciplinaController extends Controller
       if ($DisciplinaAluno['0']["Acesso"]==0) {
         return "O professor ainda nao autorizou a sua inscricao";
       }else {
-        $posts = Posts::where('idDisciplina', '=', $id)->get();
+        //$posts = Posts::where('idDisciplina', '=', $id)->get();
+          $secao = Secao::where('idDisciplina', '=', $id)->get();
 
-        return view('disciplinaaluno.detalhes(aluno)',['posts'=> $posts,'d'=> $disciplina ]);
+        return view('disciplinaaluno.detalhes(aluno)',['secao'=> $secao,'d'=> $disciplina ]);
       }
 
     }else {
       return "Voce ainda nao se cadastrou nesse materia";
     }
-
-
 
       //if aluno matriculado na disciplina {
         //return view('disciplinaaluno.detalhes',['posts'=> $posts,'d'=> $disciplina ]); //}
@@ -70,13 +69,15 @@ class DisciplinaController extends Controller
       if(empty($disciplina)) {
       return "Essa disciplina não existe";
       }
-      $posts = Posts::all();
-
-      $posts = Posts::where('idDisciplina', '=', $id)->get();
-
       //$posts = Posts::all();
 
-      return view('disciplina.detalhes',['posts'=> $posts,'d'=> $disciplina ]);
+    //  $posts = Posts::where('idDisciplina', '=', $id)->get();
+      $secao= Secao::where('idDisciplina', '=', $id)->get();
+
+    //  $secao = Secao::all();
+
+    // return view('secao.detalhes',['posts'=> $posts,'d'=> $disciplina ]);
+     return view('disciplina.detalhes',['secao'=> $secao,'d'=> $disciplina ]);
     }
 
   }
