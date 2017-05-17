@@ -129,10 +129,6 @@ $posts = Posts::where('idSecao', '=', $id)->get();
 
   public function AdicionarComentario($id){
 
-<<<<<<< HEAD
-    comentarios::create(Request::all());
-    return redirect()->action('PostsController@mostra, $id');
-=======
     Comentarios::create(Request::all());
     // $comentario = new comentarios;
     // $comentario->post_id = Input::get('post_id');
@@ -147,7 +143,6 @@ $posts = Posts::where('idSecao', '=', $id)->get();
   public function getImage()
   {
       return view('telas.test');
->>>>>>> 54fa547a45243890a831fe951a40dfd6f1610a45
   }
   /**
   * Manage Post Request
