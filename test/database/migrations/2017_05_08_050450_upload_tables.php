@@ -16,10 +16,12 @@ class UploadTables extends Migration
 
       Schema::create('upload', function(Blueprint $table) {
         $table->increments('id');
-        $table->string('nomearquivo');
+        $table->string('nomeantigo');
+        $table->string('novonome');
+        $table->string('caminho');
+        $table->integer('ligacao');
         $table->string('mime');
-        $table->string('original_filename');
-        $table->timestamps();
+
       });
         //
     }

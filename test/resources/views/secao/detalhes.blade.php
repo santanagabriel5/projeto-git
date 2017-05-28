@@ -39,17 +39,17 @@ Posts
         <td>{{$po->titulo}}</td>
 
         <td>
-            <a href="{{action('PostsController@mostra', $se->id)}}">
+            <a href="{{action('PostsController@mostra', $po->id)}}">
             <span class="glyphicon glyphicon-search"></span>
           </a>
         </td>
         <td>
-          <a href="{{action('PostsController@remove', $se->id)}}">
+          <a href="{{action('PostsController@remove', $po->id)}}">
             <span class="glyphicon glyphicon-trash"></span>
           </a>
         </td>
         <td>
-          <a href="{{action('PostsController@atualizar', $se->id)}}">
+          <a href="{{action('PostsController@atualizar', $po->id)}}">
             <span class="glyphicon glyphicon-pencil"></span>
           </a>
         </td>

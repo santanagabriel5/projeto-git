@@ -30,12 +30,14 @@ $user = app('Illuminate\Contracts\Auth\Guard')->user();
   public function mostra($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
-$posts = Posts::where('idSecao', '=', $id)->get();
+    $posts = Posts::find($id);
+
+
     if($user['professor']==0) {
-    
+
       $comentarios = Comentarios::where('post_id', '=', $id)->get();
 
-      return view('posts(aluno).detalhes')->with('po', $posts)->with('c', $comentarios);
+      return view('posts(aluno).detalhes')->with('po', $posts)->with('comentarios', $comentarios);
 
     }else {
       if(empty($posts)) {
@@ -44,7 +46,7 @@ $posts = Posts::where('idSecao', '=', $id)->get();
       }
       $comentarios = Comentarios::where('post_id', '=', $id)->get();
 
-      return view('posts.detalhes')->with('po', $posts)->with('c', $comentarios);
+      return view('posts.detalhes')->with('po', $posts)->with('comentarios', $comentarios);
     }
 
   }
