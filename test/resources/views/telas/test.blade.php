@@ -6,7 +6,6 @@
 </head>
 <body>
 <center>
-<a href="/avatars/QPfpobNOqY17ESDGCIdLsgYFFRru2xYfzmr1FXwa.jpeg" download> download <>
 
 
 <form  action="/avatars" method="post" enctype="multipart/form-data">

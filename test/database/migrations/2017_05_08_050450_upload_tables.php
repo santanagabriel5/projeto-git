@@ -19,8 +19,8 @@ class UploadTables extends Migration
         $table->string('nomeantigo');
         $table->string('novonome');
         $table->string('caminho');
+        $table->boolean('post');
         $table->integer('ligacao');
-        $table->string('mime');
 
       });
         //

@@ -17,7 +17,7 @@ class CreateComentariosTable extends Migration
         $table->increments('id');
         $table->string('nome');
         $table->integer('post_id');
-        $table->dateTime('datacriacao');
+        $table->date('datacriacao');
         $table->time('hora');
         $table->string('conteudo');
       });
