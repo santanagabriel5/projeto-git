@@ -8,8 +8,6 @@ use App\DisciplinaAluno;
 use App\Http\Requests\DisciplinasRequest;
 use App\Comentarios;
 
-
-
 class SecaoController extends Controller
 {
   public function lista()  {
@@ -23,7 +21,7 @@ class SecaoController extends Controller
       //  $posts = Posts::all();
       //$disciplina = Disciplina::find($id);
       return redirect()
-      ->action('DisciplinaController@lista');
+      ->action('DisciplinaController@mostra',['id'=>$id,'secao'=> $secao,'d'=> $disciplina ]);
 
       //$secao = Secao::where('idDisciplina', '=', $id)->get();
 //return view('disciplina',['id'=>$id,'secao'=> $secao,'d'=> $disciplina ]);
