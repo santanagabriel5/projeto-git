@@ -6,8 +6,8 @@
     <li class="active">Detalhes disciplina</li>
 </ol>
 @endsection
-@section('content')
 
+@section('content')
 <div class="col-lg-6">
           <div class="box box-success">
             <div class="box-header with-border">

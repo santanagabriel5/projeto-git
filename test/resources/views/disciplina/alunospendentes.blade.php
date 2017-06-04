@@ -1,5 +1,10 @@
 @extends('../layout/admin_template')
-
+@section('breadcrumb')
+<ol class="breadcrumb">
+    <li><a href="{{action('DisciplinaController@lista')}}"><i class="fa fa-dashboard"></i> Listagem</a></li>
+    <li class="active">Alunos pendentes</li>
+</ol>
+@endsection
 @section('content')
       @if(empty($alunos))
       <div class="alert alert-danger alert-dismissible">

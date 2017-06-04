@@ -1,5 +1,11 @@
-
 @extends('../layout/admin_template')
+
+@section('breadcrumb')
+<ol class="breadcrumb">
+    <li><a href="{{action('DisciplinaController@lista')}}"><i class="fa fa-dashboard"></i> Listagem</a></li>
+    <li class="active">Matricular</li>
+</ol>
+@endsection
 
 @section('content')
 <div class="col-lg-6">

@@ -1,9 +1,11 @@
 @extends('../layout/admin_template')
+
 @section('breadcrumb')
 <ol class="breadcrumb">
     <li><a href="{{action('DisciplinaController@lista')}}"><i class="fa fa-dashboard"></i> Listagem</a></li>
 </ol>
 @endsection
+
 @section('content')
 <section class="content">
   <section class="col-lg-12 connectedSortable ui-sortable">
