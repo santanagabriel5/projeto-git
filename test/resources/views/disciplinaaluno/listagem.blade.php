@@ -1,4 +1,10 @@
-@extends('admin_template')
+@extends('../layout/admin_template')
+
+@section('breadcrumb')
+<ol class="breadcrumb">
+    <li><a href="{{action('DisciplinaController@lista')}}"><i class="fa fa-dashboard"></i> Listagem</a></li>
+</ol>
+@endsection
 
 @section('content')
 <section class="content">
@@ -6,22 +12,20 @@
           <!-- Custom tabs (Charts with tabs)-->
 
           <div class="box box-success">
-                 <div class="box-header with-border">
-                   <h3 class="box-title">Disciplinas</h3>
+            <div class="box-header ui-sortable-handle" style="cursor: move;">
 
-                 </div><!-- /.box-header -->
-                 <div class="box-body">
-                   <div style="position: relative; left: 0px; top: 0px;">
-                     <div class="box-header ui-sortable-handle" style="cursor: move;">
-                       <div class="box-tools pull-right">
-                         <div class="has-feedback">
-                           <input type="text" class="form-control input-sm" placeholder="Pesquisar...">
-                           <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                         </div>
-                       </div><!-- /.box-tools -->
+              <h3 class="box-title">Disciplinas</h3>
 
-                     </div>
-                     <!-- /.box-header -->
+              <!--search-->
+              <div class="box-tools pull-right">
+                <div class="has-feedback">
+                  <input type="text" class="form-control input-sm" placeholder="Pesquisar...">
+                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+              </div><!-- /.box-tools -->
+
+            </div><!-- /.box-header -->
+
                      <div class="box-body">
                        <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
                        <ul class="todo-list ui-sortable">
@@ -37,7 +41,8 @@
                            <span class="text">{{$d->titulo}}</span>
                            <!-- General tools such as edit or delete-->
                            <div class="tools">
-                             <a href="{{action('DisciplinaController@mostra', $d->id)}}"><i class="fa fa-folder-open-o"></i></a>
+                              <a href="{{action('DisciplinaController@mostra', $d->id)}}"><i class="fa fa-info"></i></a>
+                              <a href="{{action('DisciplinaController@matricula', $d->id)}}"><i class="fa fa-graduation-cap"></i></a>
                            </div>
                          </li>
                          @endforeach

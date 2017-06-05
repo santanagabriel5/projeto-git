@@ -37,7 +37,7 @@
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                         AVA
-
+                  
 
                 </div>
 
@@ -61,16 +61,11 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                      <a href="{{action('AccountSettingsController@lista')}}">Perfil</a>
-
-                                    
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Sair
                                         </a>
-
-
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}

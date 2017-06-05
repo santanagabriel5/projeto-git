@@ -1,55 +1,111 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-@extends('layout/principal(aluno)')
+@extends('.../admin_template')
 
-@section('conteudo')
-<h1>Detalhes da disciplina: {{ $d->titulo or "nenhuma informacao contida" }} </h1>
-<ul>
-<li>
-<b>Carga Horária:</b> {{ $d->cargah or "nenhuma informacao contida" }}
-</li>
-<li>
-<b>Início:</b> {{ $d->inicio or "nenhuma informacao contida" }}
-</li>
-<li>
-<b>Fim:</b> {{ $d->fim or "nenhuma informacao contida" }}
-</li>
-</ul>
-<div align="right">
-<a href="{{action('DisciplinaController@lista')}}">
-<button type="button" class="btn btn-primary">Voltar as Disciplinas</button></a>
-</div>
-<br><BR>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="{{action('DisciplinaController@mostra', $d->id)}}">
- Seção
-</a>
-</div>
-<ul class="nav navbar-nav navbar-right">
-<li>
-<a href="{{action('SecaoController@lista')}}">Secão</a>
-</li>
-</ul>
-</div>
-</nav>
+@section('breadcrumb')
+<ol class="breadcrumb">
+    <li><a href="{{action('DisciplinaController@lista')}}"><i class="fa fa-dashboard"></i> Listagem</a></li>
+    <li class="active">Detalhes disciplina</li>
+</ol>
+@endsection
 
-@if(empty($secao))
-<div class="alert alert-danger">
- Não tem nenhuma seção
-</div>
-@else
-<table class="table table-striped table-bordered table-hover">
-@foreach ($secao as $se)
-<tr>
-<td>{{$se->titulo}}</td>
+@section('content')
+<div class="col-lg-6">
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Detalhes da disciplina: {{ $d->titulo or "nenhuma informacao contida" }}</h3>
 
-<td>
-  <a href="{{action('SecaoController@mostra', $se->id)}}">
-    <span class="glyphicon glyphicon-search"></span>
-  </a>
-</tr>
-@endforeach
-</table>
-@endif
-@stop
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="col-lg-6">
+                <!-- small box -->
+                <div class="small-box bg-yellow">
+                <small class="small-box-footer">Carga Horária</small>
+                <div class="icon">
+                  <i class="ion ion-clock"></i>
+                </div>
+                  <div class="inner">
+                      <h4><b>{{ $d->cargah or "nenhuma informacao contida" }}</h4><b>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                <small class="small-box-footer">Período</small>
+                <div class="icon">
+                  <i class="ion ion-calendar"></i>
+                </div>
+                  <div class="inner">
+                    <small>Início:</small>
+                    <h4><b>{{ $d->inicio or "nenhuma informacao contida" }}</h4><b>
+                    <small>Fim:</small>
+                    <h4><b>{{ $d->fim or "nenhuma informacao contida" }}</h4><b>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <!-- small box -->
+                <div class="small-box bg-blue">
+                  <div class="inner">
+                    <h4><b>Alunos pendentes</b></h4>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                  </div>
+                  <a href="{{action('DisciplinaController@listaralunospendentes', $d->id)}}" class="small-box-footer">Solicitações de matrícula<i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+</div>
+
+
+
+
+<div class="col-lg-6">
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title"><a href="{{action('SecaoController@lista')}}">Seções</a></h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+                <ul class="todo-list ui-sortable">
+                  @foreach ($secao as $se)
+                  <li>
+                    <!-- drag handle -->
+                    <span class="handle ui-sortable-handle">
+                          <i class="fa fa-folder-open-o"></i>
+                     </span>
+
+                    <!-- todo text -->
+                    <span class="text"><a href="{{action('SecaoController@mostra', $se->id)}}">{{$se->titulo}}</a></span>
+                    <!-- General tools such as edit or delete-->
+                    <div class="tools">
+                      <a href="{{action('SecaoController@mostra', $se->id)}}"><i class="fa fa-info"></i></a>
+                    </div>
+                  </li>
+                  @endforeach
+                </ul>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+</div>
+
+@endsection

@@ -1,19 +1,32 @@
-@extends ('layout.principal')
-@section('conteudo')
+@extends('../layout/admin_template')
+@section('breadcrumb')
+<ol class="breadcrumb">
+    <li><a href="{{action('DisciplinaController@lista')}}"><i class="fa fa-dashboard"></i> Disciplina</a></li>
+    <li class="{{action('SecaoController@lista')}}"> Sessão</li>
+    <li class="active"> Nova sessão</li>
+</ol>
+@endsection
+@section('content')
+<div class="col-lg-6">
+  <div class="box box-success">
+              <div class="box-header">
+                <h3 class="box-title">Cadastrar sessão</h3>
+              </div>
+              <div class="box-body">
+                <form action="/disciplina/adiciona" method="post">
+                  <input type="hidden"  name="_token" value="{{{ csrf_token() }}}" />
 
-<h1>Cadastrar Secao</h1>
-<form action="/disciplina/secao/adiciona/{{$idDisciplina}}" method="post">
-  <input type="hidden"  name="_token" value="{{{ csrf_token() }}}" />
-  <input type="hidden"  name="idDisciplina" value= {{$idDisciplina}} />
+                  <input type="hidden"  name="codProfessor" value= {{$p->id}} />
 
- </div>
+                  <div class="form-group">
+                    <label>Titulo</label>
+                    <input name="titulo" class="form-control pull-right">
+                  </div>
 
-  <div class="form-group">
-    <label>Titulo</label>
-    <input name="titulo" class="form-control">
-  </div>
-  <button type="submit" class="btn btn-primary btn-block">Submit</button>
-  </form>
-
-<br><br> <button type="button" class="btn btn-primary">Voltar</button>
-@stop
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-block btn-success">Enviar</button>
+                  </div>
+                  </form>
+            </div>
+</div>
+@endsection
