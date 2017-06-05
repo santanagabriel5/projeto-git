@@ -2,6 +2,7 @@
 @section('breadcrumb')
 <ol class="breadcrumb">
     <li><a href="{{action('DisciplinaController@lista')}}"><i class="fa fa-dashboard"></i> Listagem</a></li>
+    <li><a href="#">Detalhes disciplina</a></li>
     <li class="active">{{ $se->titulo or "nenhuma informacao contida" }}</li>
 </ol>
 @endsection
