@@ -20,11 +20,20 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
+//Route::get('account', 'AccountSettingsController@index');
+//Route::post('account', 'AccountSettingsController@updateAccount');
+
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index');
 
+Route::get('/perfil', 'AccountSettingsController@lista');
+Route::get('/perfil/atualizar/{id}','AccountSettingsController@updateAccount');
+
+Route::get('/perfil/atualiza/{id}','AccountSettingsController@atualiza');
+
 Route::get('/disciplina', 'DisciplinaController@lista');
+
 
 
 Route::get('/disciplina/mostra/{id}','DisciplinaController@mostra')->where('id','[0-9]+');
