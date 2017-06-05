@@ -33,10 +33,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="wrapper">
 
     <!-- Header -->
-    @include('header')
+    @include('/layout/header')
 
     <!-- Sidebar -->
-    @include('sidebar')
+    @include('/layout/sidebar')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -47,10 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <small>{{ $page_description or null }}</small>
             </h1>
             <!-- You can dynamically generate breadcrumbs here -->
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
-            </ol>
+            @yield('breadcrumb')
         </section>
 
         <!-- Main content -->
@@ -61,7 +58,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div><!-- /.content-wrapper -->
 
     <!-- Footer -->
-    @include('footer')
+    @include('/layout/footer')
 
 </div><!-- ./wrapper -->
 
