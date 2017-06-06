@@ -7,42 +7,36 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Uploads;
 use Illuminate\Http\File;
-
-
+use App\Http\Requests\UploadRequest;
 use Illuminate\Support\Facades\Input;
-
-
 
 class UploadController extends Controller
 {
 
-  public function uploaddearquivo()  {
+  public function uploaddearquivo(UploadRequest $request)  {
 
+    $nomes=array();
+    $i=0;
+    $retorno = array();
     $upload = new Uploads ();
-    $arquivo = request()->file('avatar');
 
-    $url =Storage::disk('public')->put('avatar', $arquivo);
-
-    $contents = Storage::get('public/'.$url);
-
-
-    $upload->nomeantigo =  $arquivo->getClientOriginalName();
-    $upload->novonome = substr($url, strrpos($url, '/') + 1);
-    $upload->caminho = $url;
-    $upload->ligacao = 1;
-    $upload->post=0;
-    $upload->save();
-
+        foreach ($request->arquivo as $item) {
+          $url =Storage::disk('public')->put('uploads', $item);
+          $upload->nomeantigo =  $item->getClientOriginalName();
+          $upload->novonome = substr($url, strrpos($url, '/') + 1);
+          $upload->caminho = $url;
+          $upload->ligacao = 1;
+          $upload->post=0;
+          $upload->save();
+          $array[$i]=$url;
+          $nomes[$i] = $item->getClientOriginalName();
+          $i++;
 
 
 
+        }
 
-
-
-
-
-
-    return (view ('telas.imagem')->with("url",$url));
+    return (view ('telas.imagem')->with("nomes",$nomes)->with("array",$array));
 
     }
 
@@ -53,5 +47,4 @@ class UploadController extends Controller
 
 
       }
-    //
 }

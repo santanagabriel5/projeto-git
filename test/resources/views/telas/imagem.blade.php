@@ -5,14 +5,14 @@
     <title></title>
   </head>
   <body>
+<?php $i=0; ?>
+@foreach($array as $link)
+<a href="storage/{{$link}}" download="{{$nomes[$i]}}">Download the archive</a><br>
+<?php $i++; ?>
 
-<a href="storage/{{$url}}" download>Download the archive</a>
+@endforeach
 
 
 
-    <?php echo $url;
-//echo Storage::get($url);
-
-     ?>
   </body>
 </html>

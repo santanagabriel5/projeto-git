@@ -12,8 +12,7 @@
   <input type="hidden"  name="_token" value="{{{ csrf_token() }}}" />
 
 
-
-  <input type="file" name="avatar"></input>
+  <input type="file" name="arquivo[]" multiple />
   <input type="submit" value="Anexar">
 
 
