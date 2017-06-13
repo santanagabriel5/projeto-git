@@ -24,6 +24,17 @@
             <div class="box-body">
               <div class="col-md-3 col-sm-6 col-xs-12">
                 {{ $po->descricao or "nenhuma informacao contida" }}
+
+                @if (isset($links))
+                <?php $i=0;?>
+
+                  @foreach($links as $arquivo)
+                  <br>
+                  <a href="/storage/{{$arquivo}}" download='{{$nomes[$i]}}'>Baixar os arquivo {{$nomes[$i]}}</a><br>
+                  <?php $i++; ?>
+                  @endforeach
+                @endif
+
               </div>
               <br><br>
               <h5 class="box-title">Comentarios</h5>

@@ -24,8 +24,6 @@ class UploadController extends Controller
           $url =Storage::disk('public')->put('uploads', $item);
           $upload->nomeantigo =  $item->getClientOriginalName();
           $upload->novonome = substr($url, strrpos($url, '/') + 1);
-          $upload->caminho = $url;
-          $upload->ligacao = 1;
           $upload->post=0;
           $upload->save();
           $array[$i]=$url;

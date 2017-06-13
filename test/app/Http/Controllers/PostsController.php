@@ -4,6 +4,8 @@ use Request;
 use App\Posts;
 use App\Comentarios;
 use App\Secao;
+use App\Uploads;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -27,17 +29,31 @@ $user = app('Illuminate\Contracts\Auth\Guard')->user();
           return view('secao.detalhes',['id'=>$id,'posts'=> $posts,'s'=> $id]);
       }
 }
+
   public function mostra($id)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     $posts = Posts::find($id);
+    $comentarios = Comentarios::where('post_id', '=', $id)->get();
+    $arquivos = Uploads::where('post', '=', $id)->get();
+    $links=array();
+    $nomes=array();
+
+    $i=0;
+
+    if (isset($arquivos)) {
+      foreach ($arquivos as $arquivo) {
+        $links[$i] = $arquivo->novonome;
+        $nomes[$i] = $arquivo->nomeantigo;
+        $i++;
+      }
+    }
 
 
     if($user['professor']==0) {
 
-      $comentarios = Comentarios::where('post_id', '=', $id)->get();
+      return view('posts(aluno).detalhes')->with('po', $posts)->with('comentarios', $comentarios)->with('links',$links)->with('nomes',$nomes);
 
-      return view('posts(aluno).detalhes')->with('po', $posts)->with('comentarios', $comentarios);
 
     }else {
       if(empty($posts)) {
@@ -46,7 +62,7 @@ $user = app('Illuminate\Contracts\Auth\Guard')->user();
       }
       $comentarios = Comentarios::where('post_id', '=', $id)->get();
 
-      return view('posts.detalhes')->with('po', $posts)->with('comentarios', $comentarios);
+      return view('posts.detalhes')->with('po', $posts)->with('comentarios', $comentarios)->with('links',$links)->with('nomes',$nomes);
     }
 
   }
@@ -62,13 +78,43 @@ $user = app('Illuminate\Contracts\Auth\Guard')->user();
     }
   }
 
-  public function adiciona($idSecao)  {
+  public function adiciona($idSecao,Request $request)  {
     $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
     if($user['professor']==0) {
       return view('telas.mensagem');
     }else {
-      Posts::create(Request::all());
+
+      $params = Request::all();
+
+      $post = new Posts;
+      $post->titulo = $params['titulo'];
+      $post->descricao = $params['descricao'];
+      $post->datacriacao = $params['datacriacao'];
+      $post->idSecao = $params['idSecao'];
+      $post->save();
+
+
+
+      //Posts::create(Request::all());
+
+
+      $i=0;
+
+
+          foreach ($params['arquivo'] as $item) {
+            $upload = new Uploads ();
+
+            $url =Storage::disk('public')->put('arquivos', $item);
+            $upload->nomeantigo =  $item->getClientOriginalName();
+            $upload->novonome = $url;
+            $upload->post=$post->id;
+            $upload->save();
+            $array[$i]=$url;
+            $nomes[$i] = $item->getClientOriginalName();
+            $i++;
+
+          }
 
     return redirect()->action('SecaoController@mostra', $idSecao);
     }

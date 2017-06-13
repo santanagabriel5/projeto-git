@@ -14,7 +14,7 @@
                 <h3 class="box-title">Novo post</h3>
               </div>
               <div class="box-body">
-                <form action="/disciplina/secao/posts/adiciona/{{$idSecao}}" method="post">
+                <form action="/disciplina/secao/posts/adiciona/{{$idSecao}}" method="post" enctype="multipart/form-data">
                   <input type="hidden"  name="_token" value="{{{ csrf_token() }}}" />
 
                   <input type="hidden"  name="datacriacao" value= {{date('Y-m-d')}} />
@@ -30,6 +30,12 @@
                     <label>Descricao</label>
                     <textarea rows="4" cols="40"  name="descricao" class="form-control"/></textarea>
                   </div>
+
+                  <div class="form-group">
+                    <label>Arquivos</label>
+                    <input type="file" name="arquivo[]" multiple />
+                  </div>
+
 
                   <div class="form-group">
                     <button type="submit" class="btn btn-success btn-block">Submit</button>

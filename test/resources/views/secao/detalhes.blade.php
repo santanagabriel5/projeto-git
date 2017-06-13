@@ -68,12 +68,12 @@
                      </span>
 
                     <!-- todo text -->
-                    <span class="text"><a href="{{action('PostsController@mostra', $se->id)}}">{{$po->titulo}}</a></span>
+                    <span class="text"><a href="{{action('PostsController@mostra', $po->id)}}">{{$po->titulo}}</a></span>
                     <!-- General tools such as edit or delete-->
                     <div class="tools">
-                      <a href="{{action('PostsController@mostra', $se->id)}}"><i class="fa fa-info"></i></a>
-                      <a href="{{action('PostsController@atualizar', $se->id)}}"><i class="fa fa-edit"></i></a>
-                      <a href="{{action('PostsController@remove', $se->id)}}"><i class="fa fa-trash-o"></i></a>
+                      <a href="{{action('PostsController@mostra', $po->id)}}"><i class="fa fa-info"></i></a>
+                      <a href="{{action('PostsController@atualizar', $po->id)}}"><i class="fa fa-edit"></i></a>
+                      <a href="{{action('PostsController@remove', $po->id)}}"><i class="fa fa-trash-o"></i></a>
                     </div>
                   </li>
                   @endforeach
