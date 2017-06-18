@@ -61,7 +61,7 @@
                             <li><a href="#">»</a></li>
                           </ul>
                         </div>
-                        <a href="{{action('DisciplinaController@novo')}}"><button type="button" class="btn btn-default pull-left" href="{{action('DisciplinaController@novo')}}"><i class="fa fa-plus"></i> Add Disciplina</button></a>
+                        <a href="{{action('DisciplinaController@novo')}}"><button type="button" class="btn btn-default pull-left" href="{{action('DisciplinaController@novo')}}"><i class="fa fa-plus"></i> Nova disciplina</button></a>
                       </div>
                     </div>
                   </section>

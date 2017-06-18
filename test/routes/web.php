@@ -35,7 +35,7 @@ Route::post('/disciplina/adiciona','DisciplinaController@adiciona');
 
 Route::get('/disciplina/atualizar/{id}','DisciplinaController@atualizar');
 
-Route::post('/disciplina/atualiza','DisciplinaController@atualiza');
+Route::post('/disciplina/atualiza/{id}','DisciplinaController@atualiza');
 
 
 Route::get('/disciplina/remove/{id}','DisciplinaController@remove');
@@ -70,7 +70,7 @@ Route::post('/disciplina/secao/posts/adiciona/{id}','PostsController@adiciona');
 
 Route::get('/disciplina/secao/posts/atualizar/{id}','PostsController@atualizar');
 
-Route::post('/disciplina/secao/posts/atualiza','PostsController@atualiza');
+Route::post('/disciplina/secao/posts/atualiza/{id}','PostsController@atualiza');
 
 Route::get('/disciplina/secao/post/remove/{id}','PostsController@remove');
 

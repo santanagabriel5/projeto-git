@@ -13,10 +13,10 @@
                 <h3 class="box-title">Cadastrar sessão</h3>
               </div>
               <div class="box-body">
-                <form action="/secao/adiciona" method="post">
+                <form action="{{action('SecaoController@adiciona', $idDisciplina)}}" method="post">
                   <input type="hidden"  name="_token" value="{{{ csrf_token() }}}" />
 
-                  <input type="hidden"  name="_token" value={{$idDisciplina}} />
+                  <input type="hidden"  name="idDisciplina" value="{{$idDisciplina}}" />
 
                   <div class="form-group">
                     <label>Titulo</label>

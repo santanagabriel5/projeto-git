@@ -11,38 +11,7 @@
 <div class="col-lg-12">
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">Detalhes da seção: {{ $se->titulo or "nenhuma informacao contida" }}</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
-              <!-- /.box-tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box bg-yellow">
-                  <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">Criada em: </span>
-                    <span class="info-box-number">Nenhuma informacao contida</span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-</div>
-
-<div class="col-lg-12">
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Posts</h3>
+              <h3 class="box-title">{{ $se->titulo or "nenhuma informacao contida" }}</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>

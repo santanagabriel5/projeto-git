@@ -91,8 +91,8 @@
                     <!-- General tools such as edit or delete-->
                     <div class="tools">
                       <a href="{{action('SecaoController@mostra', $se->id)}}"><i class="fa fa-info"></i></a>
-                      <a href="{{action('SecaoController@atualizar', $d->id)}}"><i class="fa fa-edit"></i></a>
-                      <a href="{{action('SecaoController@remove', $d->id)}}"><i class="fa fa-trash-o"></i></a>
+                      <a href="{{action('SecaoController@atualizar', $se->id)}}"><i class="fa fa-edit"></i></a>
+                      <a href="{{action('SecaoController@remove', $se->id)}}"><i class="fa fa-trash-o"></i></a>
                     </div>
                   </li>
                   @endforeach

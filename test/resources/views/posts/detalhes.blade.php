@@ -23,20 +23,27 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="col-md-3 col-sm-6 col-xs-12">
-                {{ $po->descricao or "nenhuma informacao contida" }}
+                <div class="col-lg-6">
 
-                @if (isset($links))
-                <?php $i=0;?>
+                  {{ $po->descricao or "nenhuma informacao contida" }}
 
-                  @foreach($links as $arquivo)
-                  <br>
-                  <a href="/storage/{{$arquivo}}" download='{{$nomes[$i]}}'>Baixar os arquivo {{$nomes[$i]}}</a><br>
-                  <?php $i++; ?>
-                  @endforeach
-                @endif
+                  @if (isset($links))
+                  <?php $i=0;?>
 
+                    @foreach($links as $arquivo)
+                    <br>
+                    <a href="/storage/{{$arquivo}}" download='{{$nomes[$i]}}'>Baixar os arquivo {{$nomes[$i]}}</a><br>
+                    <?php $i++; ?>
+                    @endforeach
+                  @endif
+                </div>
+
+                  <a href="{{action('PostsController@atualizar', $po->id)}}" class="btn btn-primary"><b>Atualizar post</b></a>
+                  <a href="{{action('PostsController@remove', $po->id)}}" class="btn btn-danger"><b>Remover post</b></a>
+                
               </div>
               <br><br>
+              <div class="col-lg-12">
               <h5 class="box-title">Comentarios</h5>
               <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;">
                 <div class="box-body chat" id="chat-box" style="overflow: hidden; width: auto; height: auto;">

@@ -12,11 +12,11 @@
                 <h3 class="box-title">Atualizar disciplina</h3>
               </div>
               <div class="box-body">
-                <form action="/disciplina/adiciona" method="post">
+                <form action="{{action('DisciplinaController@atualiza', $d->id)}}" method="post">
 
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 
-                    <input type="hidden" name="atualiza" value="1" />
+                    <input type="hidden" name="atualiza" value="{{$d->id}}" />
 
                     <input type="hidden" name="codProfessor" value="{{$p->id}}"  />
 

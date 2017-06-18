@@ -3,7 +3,7 @@
 <ol class="breadcrumb">
     <li><a href="{{action('DisciplinaController@lista')}}"><i class="fa fa-dashboard"></i> Disciplina</a></li>
     <li><a href="#"> Sessão</li></a>
-    <li><a href="{{action('PostsController@lista')}}"> Posts</li></a>
+    <li><a href="#"> Posts</li></a>
     <li class="active"> Novo post</li>
 </ol>
 @endsection
@@ -14,15 +14,13 @@
                 <h3 class="box-title">Atualizar post</h3>
               </div>
               <div class="box-body">
-                <form action="/disciplina/secao/posts/atualiza" method="post">
+                <form action="{{action('PostsController@atualiza', $po->id)}}" method="post">
 
-                  <input type="hidden"
-                  name="_token" value="{{{ csrf_token() }}}" />
+                  <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 
-                  <input type="hidden"
-                  name="atualiza" value="1" />
+                  <input type="hidden" name="atualiza" value="{{$po->id}}" />
 
-                  <input type="hidden"  name="codProfessor" value=  {{$po->id}}  />
+                  <input type="hidden"  name="codProfessor" value= "{{$p->id}}"  />
 
                   <input type="hidden"
                   name="id" value="{{$po->id}}" />

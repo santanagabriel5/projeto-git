@@ -10,18 +10,18 @@ use App\Comentarios;
 
 class SecaoController extends Controller
 {
-  public function lista()  {
+  public function lista($id)  {
       $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
 
       if($user['professor']==0) {
 
-        return view('disciplinaaluno.detalhes(aluno)',['id'=>$id,'secao'=> $secao,'d'=> $disciplina ]);
+        return view('disciplinaaluno.detalhes(aluno)',['id'=>$id]);
       }else {
       //  $posts = Posts::all();
       //$disciplina = Disciplina::find($id);
       return redirect()
-      ->action('DisciplinaController@mostra',['id'=>$id,'secao'=> $secao,'d'=> $disciplina ]);
+      ->action('DisciplinaController@mostra',['id'=>$id]);
 
       //$secao = Secao::where('idDisciplina', '=', $id)->get();
 //return view('disciplina',['id'=>$id,'secao'=> $secao,'d'=> $disciplina ]);
@@ -72,8 +72,8 @@ class SecaoController extends Controller
 
       return redirect()->action('DisciplinaController@mostra', $idDisciplina);
       }
-
     }
+
     public function atualizar($id)  {
       $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
@@ -101,7 +101,7 @@ class SecaoController extends Controller
 
         $secao->save();
 
-       return redirect()->action('DisciplinaController@mostra', $id);
+       return redirect()->action('DisciplinaController@mostra', $secao->idDisciplina);
       }
     }
 

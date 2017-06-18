@@ -17,7 +17,7 @@ class PostsController extends Controller
 }*/
 
   public function lista($id)  {
-$user = app('Illuminate\Contracts\Auth\Guard')->user();
+    $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
       if($user['professor']==0) {
         return view('telas.alunoenxerido');
@@ -163,7 +163,7 @@ $user = app('Illuminate\Contracts\Auth\Guard')->user();
       $posts = Posts::find($id);
       $posts->delete();
       return redirect()
-      ->action('SecaoController@lista');
+      ->action('SecaoController@lista', $posts->idSecao);
     }
 
   }
