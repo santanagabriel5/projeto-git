@@ -20,12 +20,19 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
+
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index');
 
+Route::get('/perfil', 'AccountSettingsController@lista');
+Route::get('/perfil/atualizar/{id}','AccountSettingsController@updateAccount');
+
+Route::post('/perfil/atualiza','AccountSettingsController@atualiza');
+
 Route::get('/disciplina', 'DisciplinaController@lista');
 
+Route::get('/disciplina/todas', 'DisciplinaController@listagemAluno');
 
 Route::get('/disciplina/mostra/{id}','DisciplinaController@mostra')->where('id','[0-9]+');
 

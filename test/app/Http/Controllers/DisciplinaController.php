@@ -23,7 +23,8 @@ class DisciplinaController extends Controller
 
     if($user['professor']==0) {
       $disciplina = Disciplina::all();
-      return view('disciplinaaluno.listagem')->with('disciplina', $disciplina);
+      $disciplinaaluno = DisciplinaAluno::all();
+      return view('disciplinaaluno.listagem')->with('disciplina', $disciplina)->with('disciplinaaluno', $disciplinaaluno);
     }else {
 
       //$posts = Posts::all();
@@ -181,10 +182,21 @@ class DisciplinaController extends Controller
 
     $disciplina = Disciplina::all();
 
-    return redirect()->action('DisciplinaController@lista')->with('p', $user);
+    return redirect()->action('DisciplinaController@listagemAluno')->with('p', $user);
 
 
 
+  }
+
+  public function listagemAluno(){
+    $user = app('Illuminate\Contracts\Auth\Guard')->user();
+
+    if($user['professor']==0) {
+      $disciplina = Disciplina::all();
+      return view('disciplinaaluno.todasDisciplinas')->with('disciplina', $disciplina);
+    }else {
+      return redirect()->action('DisciplinaController@lista');
+    }
   }
 
 
@@ -193,16 +205,16 @@ class DisciplinaController extends Controller
 
   public function listaralunospendentes($idmateria){
 
-  $idDisciplinas =  DB::select(DB::raw("SELECT Users.name, DisciplinaAluno.Id iddisciplinaaluno,DisciplinaAluno.IdDisciplina
-FROM Users , DisciplinaAluno
-WHERE DisciplinaAluno.idDisciplina = $idmateria
-AND Users.id = DisciplinaAluno.IdAluno AND DisciplinaAluno.acesso = 0 "));
+    $idDisciplinas =  DB::select(DB::raw("SELECT Users.name, DisciplinaAluno.Id iddisciplinaaluno,DisciplinaAluno.IdDisciplina
+    FROM Users , DisciplinaAluno
+    WHERE DisciplinaAluno.idDisciplina = $idmateria
+    AND Users.id = DisciplinaAluno.IdAluno AND DisciplinaAluno.acesso = 0 "));
 
 
 
-  //  $Alunos = DisciplinaAluno::where('idDisciplina', '=', $idmateria , 'and' , 'Acesso', '=', 0 )->get();
+    //  $Alunos = DisciplinaAluno::where('idDisciplina', '=', $idmateria , 'and' , 'Acesso', '=', 0 )->get();
 
-    return view('disciplina.alunospendentes' , ['alunos' =>$idDisciplinas]);
+      return view('disciplina.alunospendentes' , ['alunos' =>$idDisciplinas]);
 
   }
 

@@ -1,14 +1,13 @@
+@extends ('../layout/admin_template')
+@section('content')
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-@extends('layout.principal')
-
-
 <h1>Alterar Perfil</h1>
 <tr>
   <table class="table table-striped table-bordered table-hover">
     @foreach ($user as $u)
     <td>Nome:</td>
   <td>{{$u->name}}</td>
-  ]</tr>
+  </tr>
   <tr>
     <td>Endereço:</td>
     <td>{{$u->endereco}}</td>
@@ -18,8 +17,7 @@
     <td>{{$u->email}}</td>
     <tr>
       <td>Senha:</td>
-      <td>{{$u->password}}</td>
-
+    <td>{{$u->password}} </td>
   </tr>
 </tr>
 <td>
@@ -28,3 +26,4 @@ Editar
   </a>
 </td>
 @endforeach
+@stop

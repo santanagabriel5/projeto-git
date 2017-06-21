@@ -28,11 +28,12 @@
                       <!-- /.box-header -->
                       <div class="box-body">
                         <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
-                        <ul class="todo-list ui-sortable">
+                        <div class="col-lg-4">
+                        <ul class="todo-list">
                           @foreach ($disciplina as $d)
                           <li>
                             <!-- drag handle -->
-                            <span class="handle ui-sortable-handle">
+                            <span class="handle">
                                   <i class="fa fa-ellipsis-v"></i>
                                   <i class="fa fa-ellipsis-v"></i>
                              </span>
@@ -49,6 +50,7 @@
                           </li>
                           @endforeach
                         </ul>
+                      </div>
                       </div>
                       <!-- /.box-body -->
                       <div class="box-footer clearfix no-border">

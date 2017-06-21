@@ -15,54 +15,45 @@
             <div class="box-header ui-sortable-handle" style="cursor: move;">
 
               <h3 class="box-title">Disciplinas</h3>
-
-              <!--search-->
-              <div class="box-tools pull-right">
-                <div class="has-feedback">
-                  <input type="text" class="form-control input-sm" placeholder="Pesquisar...">
-                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                </div>
-              </div><!-- /.box-tools -->
-
             </div><!-- /.box-header -->
 
                      <div class="box-body">
-                       <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
-                       <ul class="todo-list ui-sortable">
-                         @foreach ($disciplina as $d)
-                         <li>
-                           <!-- drag handle -->
-                           <span class="handle ui-sortable-handle">
-                                 <i class="fa fa-ellipsis-v"></i>
-                                 <i class="fa fa-ellipsis-v"></i>
-                            </span>
+                       @foreach ($disciplinaaluno as $d)
+                        @if ($d->Acesso == 1)
+                          <ul class="todo-list">
+                            @foreach ($disciplina as $dis)
+                            @if($d->idDisciplina == $dis->id)
+                            <li>
+                              <!-- drag handle -->
+                              <span class="handle">
+                                    <i class="fa fa-ellipsis-v"></i>
+                                    <i class="fa fa-ellipsis-v"></i>
+                               </span>
 
-                           <!-- todo text -->
-                           <span class="text">{{$d->titulo}}</span>
-                           <!-- General tools such as edit or delete-->
-                           <div class="tools">
-                              <a href="{{action('DisciplinaController@mostra', $d->id)}}"><i class="fa fa-info"></i></a>
-                              <a href="{{action('DisciplinaController@matricula', $d->id)}}"><i class="fa fa-graduation-cap"></i></a>
-                           </div>
-                         </li>
-                         @endforeach
-                       </ul>
+                              <!-- todo text -->
+                              <span class="text">{{$disciplina->titulo}}</span>
+                              <!-- General tools such as edit or delete-->
+                              <div class="tools">
+                                <a href="{{action('DisciplinaController@mostra', $d->id)}}"><i class="fa fa-info"></i></a>
+                              </div>
+                            </li>
+
+                            @endif
+                            @endforeach
+                          </ul>
+                        @endif
+
+
+                       @endforeach
+
+
+                       <center><a href="{{action('DisciplinaController@listagemAluno')}}" class="btn btn-primary" name="Matricular">Todas as disciplinas</a></center>
                      </div>
                      <!-- /.box-body -->
                      <div class="box-footer clearfix no-border">
-                       <div class="box-tools pull-right">
-                         <ul class="pagination pagination-sm inline">
-                           <li><a href="#">«</a></li>
-                           <li><a href="#">1</a></li>
-                           <li><a href="#">2</a></li>
-                           <li><a href="#">3</a></li>
-                           <li><a href="#">»</a></li>
-                         </ul>
+
                        </div>
-                       <button type="button" class="btn btn-default pull-left"><i class="fa fa-plus"></i> Add Disciplina</button>
-
                      </div>
-
                    </div>
 
                    <!-- TO DO List -->

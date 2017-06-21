@@ -136,7 +136,7 @@
                       <!-- Menu Footer-->
                       <li class="user-footer">
                           <div class="pull-left">
-                              <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                              <a href="#" class="btn btn-default btn-flat">Atulizar  conta</a>
                           </div>
                           <div class="pull-right">
                               <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sair</a>
