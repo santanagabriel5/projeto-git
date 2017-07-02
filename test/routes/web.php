@@ -110,3 +110,11 @@ Route::post('/comentarios/cadastro/{id}', 'PostsController@AdicionarComentario')
 //TESTE DE UP DE ARQUIVO
 Route::post('/avatars', 'UploadController@uploaddearquivo');
 Route::get('/telas/test', 'UploadController@tela');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

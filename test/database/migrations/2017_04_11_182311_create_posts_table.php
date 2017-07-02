@@ -19,9 +19,11 @@ class CreatePostsTable extends Migration
         $table->string('descricao');
         $table->date('datacriacao');
         $table->integer('idSecao');
+        $table->boolean('tarefa');
+        $table->date('data_entrega');
+        $table->time('hora_entrega');
       });
     }
-
     /**
      * Reverse the migrations.
      *
