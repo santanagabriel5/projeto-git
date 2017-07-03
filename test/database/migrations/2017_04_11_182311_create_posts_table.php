@@ -20,8 +20,8 @@ class CreatePostsTable extends Migration
         $table->date('datacriacao');
         $table->integer('idSecao');
         $table->boolean('tarefa');
-        $table->date('data_entrega');
-        $table->time('hora_entrega');
+        $table->date('data_entrega')->nullable();
+        $table->time('hora_entrega')->nullable();
       });
     }
     /**
