@@ -62,7 +62,7 @@ class TarefaController extends Controller
       }
       $comentarios = Comentarios::where('post_id', '=', $id)->get();
 
-      return view('posts.detalhes')->with('po', $posts)->with('comentarios', $comentarios)->with('links',$links)->with('nomes',$nomes);
+      return view('tarefa.detalhes')->with('po', $posts)->with('comentarios', $comentarios)->with('links',$links)->with('nomes',$nomes);
     }
 
   }
@@ -74,7 +74,7 @@ class TarefaController extends Controller
     if($user['professor']==0) {
       return view('telas.mensagem');
     }else {
-          return view('posts.formulario',['idSecao' => $idSecao]);
+          return view('tarefa.formulario',['idSecao' => $idSecao]);
     }
   }
 
@@ -91,6 +91,7 @@ class TarefaController extends Controller
       $post->titulo = $params['titulo'];
       $post->descricao = $params['descricao'];
       $post->datacriacao = $params['datacriacao'];
+      $post->tarefa = $params['tarefa'];
       $post->data_entrega = $params['data_entrega'];
       $post->hora_entrega = $params['hora_entrega'];
       $post->idSecao = $params['idSecao'];
@@ -135,7 +136,7 @@ class TarefaController extends Controller
         if(empty($posts)) {
         return "Esse post não existe";
         }
-        return view('posts.atualizar',['po'=>$posts,'p'=>$user]);
+        return view('tarefa.atualizar',['po'=>$posts,'p'=>$user]);
     }
   }
 

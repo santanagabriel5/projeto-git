@@ -3,7 +3,7 @@
 <ol class="breadcrumb">
     <li><a href="{{action('DisciplinaController@lista')}}"><i class="fa fa-dashboard"></i> Disciplina</a></li>
     <li><a href="#"> Sessão</li></a>
-    <li><a href="{{action('PostsController@lista')}}"> Posts</li></a>
+    <li><a href="#"> Posts</li></a>
     <li class="active"> Novo post</li>
 </ol>
 @endsection
@@ -20,6 +20,8 @@
                   <input type="hidden"  name="datacriacao" value= {{date('Y-m-d')}} />
 
                   <input type="hidden"  name="idSecao" value= {{$idSecao}} />
+                  
+                  <input type="hidden"  name="tarefa" value='0' />
 
                   <div class="form-group">
                     <label>Titulo</label>

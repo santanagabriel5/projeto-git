@@ -121,7 +121,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // TAREFA
 
-
 Route::get('/disciplina/secao/detalhes','TarefaController@lista');
 
 Route::get('/disciplina/secao/tarefa/detalhes/{id}','TarefaController@mostra')->where('id','[0-9]+');

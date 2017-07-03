@@ -60,6 +60,7 @@
                           </ul>
                         </div>
                         <a href="{{action('PostsController@novo', $se->id)}}"><button type="button" class="btn btn-default pull-left"><i class="fa fa-plus"></i> Novo post</button></a>
+                        <a href="{{action('TarefaController@novo', $se->id)}}"><button type="button" class="btn btn-default pull-left"><i class="fa fa-plus"></i> Nova tarefa</button></a>
                       </div>
             </div>
             <!-- /.box-body -->
