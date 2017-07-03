@@ -118,3 +118,22 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// TAREFA
+
+
+Route::get('/disciplina/secao/detalhes','TarefaController@lista');
+
+Route::get('/disciplina/secao/tarefa/detalhes/{id}','TarefaController@mostra')->where('id','[0-9]+');
+
+Route::get('/disciplina/secao/tarefa/novo/{id}','TarefaController@novo');
+
+Route::post('/disciplina/secao/tarefa/adiciona/{id}','TarefaController@adiciona');
+
+Route::get('/disciplina/secao/tarefa/atualizar/{id}','TarefaController@atualizar');
+
+Route::post('/disciplina/secao/tarefa/atualiza/{id}','TarefaController@atualiza');
+
+Route::get('/disciplina/secao/tarefa/remove/{id}','TarefaController@remove');
+
+Route::get('/disciplina/secao/tarefa/json', 'TarefaController@listaJson');
