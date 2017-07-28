@@ -38,19 +38,15 @@
                     <?php $i++; ?>
                     @endforeach
                   @endif
-                </div>
 
-                  <a href="{{action('PostsController@atualizar', $po->id)}}" class="btn btn-primary"><b>Atualizar post</b></a>
-                  <a href="{{action('PostsController@remove', $po->id)}}" class="btn btn-danger"><b>Remover post</b></a>
-
-              </div>
               <br><br>
               <div class="col-lg-12">
               <h5 class="box-title">Comentarios</h5>
               <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: auto;">
                 <div class="box-body chat" id="chat-box" style="overflow: hidden; width: auto; height: auto;">
-              <!-- mostra de comentários -->
                 @foreach ($comentarios as $c)
+                <?php     $user = app('Illuminate\Contracts\Auth\Guard')->user(); ?>
+                @if($c->usuario_id == $user['id'] )
               <div class="item">
                 <img src="../dist/img/avatar5.png" alt="user image" class="online">
                 <p class="message">
@@ -61,28 +57,31 @@
                   {{$c->conteudo}}
                 </p>
                 <!-- /.mostra de comentários -->
+
               </div>
+              @endif
+
                 @endforeach
               <!-- /.item -->
-                  <div class="box-footer">
-                    <div class="input-group">
-                      <?php     $user = app('Illuminate\Contracts\Auth\Guard')->user();?>
-                      <form action="{{action('PostsController@AdicionarComentario', $po->id)}}" method="post">
-                        <div class="form-group">
-                        <input type="hidden"  name="_token" value="{{{ csrf_token() }}}" />
-                          <input type="hidden"  name="datacriacao" value= {{date("Y-m-d H:i:s")}} />
-                          <input type="hidden"  name="hora" value= {{date("H:i:s")}} />
-                          <input type="hidden"  name="post_id" value= {{$po->id}} />
-                          <input type="hidden"  name="nome" value= {{$user['name']}} />
-                          <textarea rows="2" cols="200"  name="conteudo" class="form-control" placeholder="Envie sua resposta..."/></textarea>
-                        </div>
-                        <div class="input-group-btn">
-                          <button type="submit" class="btn btn-success">Enviar</button>
-                        </div>
-                      </form>
+              <div class="box-footer">
+                <div class="input-group">
+                  <?php     $user = app('Illuminate\Contracts\Auth\Guard')->user();?>
+                  <form action="{{action('PostsController@AdicionarComentario', $po->id)}}" method="post">
+                    <div class="form-group">
+                    <input type="hidden"  name="_token" value="{{{ csrf_token() }}}" />
+                      <input type="hidden"  name="datacriacao" value= {{date("Y-m-d H:i:s")}} />
+                      <input type="hidden"  name="hora" value= {{date("H:i:s")}} />
+                      <input type="hidden"  name="post_id" value= {{$po->id}} />
+                      <input type="hidden"  name="nome" value= {{$user['name']}} />
+                      <textarea rows="2" cols="200"  name="conteudo" class="form-control" placeholder="Envie sua resposta..."/></textarea>
                     </div>
-                  </div>
+                    <div class="input-group-btn">
+                      <button type="submit" class="btn btn-success">Enviar</button>
+                    </div>
+                  </form>
                 </div>
+              </div>
+            </div>
                 <div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 184.911px;"></div>
                 <div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
               </div>

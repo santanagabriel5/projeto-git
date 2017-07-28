@@ -37,7 +37,11 @@
                      </span>
 
                     <!-- todo text -->
+                    @if ($po->tarefa ==0)
                     <span class="text"><a href="{{action('PostsController@mostra', $po->id)}}">{{$po->titulo}}</a></span>
+                    @else
+                    <span class="text"><a href="{{action('TarefaController@mostra', $po->id)}}">{{$po->titulo}}</a></span>
+                    @endif
                     <!-- General tools such as edit or delete-->
                     <div class="tools">
                       <a href="{{action('PostsController@mostra', $po->id)}}"><i class="fa fa-info"></i></a>

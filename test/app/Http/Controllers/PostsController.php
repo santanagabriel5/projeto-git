@@ -176,14 +176,37 @@ class PostsController extends Controller
   }
 
   public function AdicionarComentario($id){
+    $user = app('Illuminate\Contracts\Auth\Guard')->user();
 
-    Comentarios::create(Request::all());
+    $params = Request::all();
+    // $Comentario = new Comentarios();
+    // $Comentario = Posts::find($params['id']);
+    // $Comentario->titulo = $params['titulo'];
+    // $Comentario->descricao = $params['descricao'];
+
+    $comentario = new comentarios;
+    $comentario->post_id = $params['post_id'];
+    $comentario->nome =  $params['nome'];
+    $comentario->conteudo = $params['conteudo'];
+    $comentario->post_id = $params['post_id'];
+    $comentario->datacriacao = $params['datacriacao'];
+    $comentario->hora = $params['hora'];
+    $comentario->usuario_id = $user['id'];
+    $comentario->save();
+
+  //  Comentarios::create(Request::all());
     // $comentario = new comentarios;
     // $comentario->post_id = Input::get('post_id');
     // $comentario->nome = Input::get('nome');
     // $comentario->conteudo = Input::get('conteudo');
     // $comentario->save();
-    return redirect()->action('PostsController@mostra', $id);
+    $posts = Posts::find($id);
+
+    if ($posts->tarefa==0) {
+      return redirect()->action('PostsController@mostra', $id);
+    }else {
+      return redirect()->action('TarefaController@mostra', $id);
+    }
   }
 
   //TEST DE UP DE ARQUIVO

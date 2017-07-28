@@ -5,6 +5,6 @@ class comentarios extends Model
 {
     protected $table = 'comentarios';
     public $timestamps = false;
-    protected $fillable = array('nome','conteudo','post_id','datacriacao','hora');
+    protected $fillable = array('nome','conteudo','post_id','datacriacao','hora','usuario_id');
 }
 ?>

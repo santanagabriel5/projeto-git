@@ -52,7 +52,7 @@ class TarefaController extends Controller
 
     if($user['professor']==0) {
 
-      return view('posts(aluno).detalhes')->with('po', $posts)->with('comentarios', $comentarios)->with('links',$links)->with('nomes',$nomes);
+      return view('tarefa(aluno).detalhes')->with('po', $posts)->with('comentarios', $comentarios)->with('links',$links)->with('nomes',$nomes);
 
 
     }else {
@@ -112,6 +112,7 @@ class TarefaController extends Controller
             $upload->nomeantigo =  $item->getClientOriginalName();
             $upload->novonome = $url;
             $upload->post=$post->id;
+            $upload->user=$user['id'];
             $upload->save();
             $array[$i]=$url;
             $nomes[$i] = $item->getClientOriginalName();

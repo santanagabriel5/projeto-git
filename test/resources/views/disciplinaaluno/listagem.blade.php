@@ -22,7 +22,8 @@
                         @if ($d->Acesso == 1)
                           <ul class="todo-list">
                             @foreach ($disciplina as $dis)
-                            @if($d->idDisciplina == $dis->id)
+                            @if($d->IdDisciplina == $dis->id)
+
                             <li>
                               <!-- drag handle -->
                               <span class="handle">
@@ -31,10 +32,10 @@
                                </span>
 
                               <!-- todo text -->
-                              <span class="text">{{$disciplina->titulo}}</span>
+                              <span class="text">{{$dis->titulo}}</span>
                               <!-- General tools such as edit or delete-->
                               <div class="tools">
-                                <a href="{{action('DisciplinaController@mostra', $d->id)}}"><i class="fa fa-info"></i></a>
+                                <a href="{{action('DisciplinaController@mostra', $dis->id)}}"><i class="fa fa-info"></i></a>
                               </div>
                             </li>
 

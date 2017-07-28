@@ -20,6 +20,8 @@ class CreateComentariosTable extends Migration
         $table->date('datacriacao');
         $table->time('hora');
         $table->string('conteudo');
+        $table->integer('usuario_id');
+
       });
     }
 

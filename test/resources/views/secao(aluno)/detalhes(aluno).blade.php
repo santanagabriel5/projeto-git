@@ -1,6 +1,6 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-@extends('layout.principal(aluno)')
-@section('conteudo')
+@extends('../layout/admin_template')
+@section('content')
 <h1>Detalhes de Seção: {{ $se->titulo or "nenhuma informacao contida" }} </h1>
 <div align="right">
 <a href="{{action('DisciplinaController@lista')}}">
@@ -15,7 +15,6 @@
 </div>
 <ul class="nav navbar-nav navbar-right">
 <li>
-    <a href="{{action('PostsController@lista')}}">Post</a>
 </li>
 </ul>
 </div>
@@ -32,7 +31,11 @@
         <td>{{$po->titulo}}</td>
 
         <td>
-            <a href="{{action('PostsController@mostra', $po->id)}}">
+          @if ($po->tarefa ==0)
+          <span class="text"><a href="{{action('PostsController@mostra', $po->id)}}">{{$po->titulo}}</a></span>
+          @else
+          <span class="text"><a href="{{action('TarefaController@mostra', $po->id)}}">{{$po->titulo}}</a></span>
+          @endif
             <span class="glyphicon glyphicon-search"></span>
           </a>
         </td>

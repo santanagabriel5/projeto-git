@@ -1,4 +1,4 @@
-@extends('.../admin_template')
+@extends('../layout/admin_template')
 
 @section('breadcrumb')
 <ol class="breadcrumb">
@@ -49,18 +49,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-6">
-                <!-- small box -->
-                <div class="small-box bg-blue">
-                  <div class="inner">
-                    <h4><b>Alunos pendentes</b></h4>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-person-add"></i>
-                  </div>
-                  <a href="{{action('DisciplinaController@listaralunospendentes', $d->id)}}" class="small-box-footer">Solicitações de matrícula<i class="fa fa-arrow-circle-right"></i></a>
-                </div>
-              </div>
+
             </div>
             <!-- /.box-body -->
           </div>
